@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7uo8oo6eeglb"]
+
+[ext_resource type="Script" path="res://scenes/Effects/blood.gd" id="1_o8i62"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_252ix"]
+albedo_color = Color(0.54902, 0, 0.0941176, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wnyq7"]
+material = SubResource("StandardMaterial3D_252ix")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Blood" type="CPUParticles3D"]
+emitting = false
+amount = 21
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_wnyq7")
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+script = ExtResource("1_o8i62")

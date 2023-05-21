@@ -1,0 +1,176 @@
+[gd_scene load_steps=28 format=3 uid="uid://dvhrdn1fe5cjq"]
+
+[ext_resource type="Texture2D" uid="uid://bqxshlyleruwb" path="res://Assets/Sprites/AutoShotgunGuy/asgzh0.png" id="1_b6cfp"]
+[ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_qch8c"]
+[ext_resource type="Texture2D" uid="uid://c3kklhi88sohm" path="res://Assets/Sprites/AutoShotgunGuy/asgzi0.png" id="2_gmslv"]
+[ext_resource type="Texture2D" uid="uid://tbxw6oqhtpeu" path="res://Assets/Sprites/AutoShotgunGuy/asgzj0.png" id="3_iqiwt"]
+[ext_resource type="Texture2D" uid="uid://djckmsamfm8vg" path="res://Assets/Sprites/AutoShotgunGuy/asgzk0.png" id="4_k36y1"]
+[ext_resource type="Texture2D" uid="uid://cbo8ebrdbtwss" path="res://Assets/Sprites/AutoShotgunGuy/asgzl0.png" id="5_7354o"]
+[ext_resource type="Texture2D" uid="uid://bjqo6b87njx1k" path="res://Assets/Sprites/AutoShotgunGuy/asgzm0.png" id="6_ionjq"]
+[ext_resource type="Texture2D" uid="uid://dswf7j44d8o2a" path="res://Assets/Sprites/AutoShotgunGuy/asgzn0.png" id="7_p3kkq"]
+[ext_resource type="Texture2D" uid="uid://c2uhgxlmbh45p" path="res://Assets/Sprites/AutoShotgunGuy/asgzo0.png" id="8_r6aca"]
+[ext_resource type="Texture2D" uid="uid://ckaey5v7wfahw" path="res://Assets/Sprites/AutoShotgunGuy/asgzp0.png" id="9_igfjl"]
+[ext_resource type="Texture2D" uid="uid://dqajqxa431wh4" path="res://Assets/Sprites/AutoShotgunGuy/asgzq0.png" id="10_awo40"]
+[ext_resource type="Texture2D" uid="uid://cs64wpk5il6t0" path="res://Assets/Sprites/AutoShotgunGuy/asgzr0.png" id="11_tc65c"]
+[ext_resource type="Texture2D" uid="uid://crm4xeqk8x7gh" path="res://Assets/Sprites/AutoShotgunGuy/asgzs0.png" id="12_4cacl"]
+[ext_resource type="Texture2D" uid="uid://dkavgrdj0w4x7" path="res://Assets/Sprites/AutoShotgunGuy/asgzt0.png" id="13_la07w"]
+[ext_resource type="Texture2D" uid="uid://cmvm40vl8qcj3" path="res://Assets/Sprites/AutoShotgunGuy/asgzu0.png" id="14_1taup"]
+[ext_resource type="Texture2D" uid="uid://b8jupr58fn7r3" path="res://Assets/Sprites/AutoShotgunGuy/asgzv0.png" id="15_qqip2"]
+[ext_resource type="Texture2D" uid="uid://oxjlayplslb2" path="res://Assets/Sprites/AutoShotgunGuy/asgzw0.png" id="16_mr75r"]
+[ext_resource type="Texture2D" uid="uid://c4e713je2m0jf" path="res://Assets/Sprites/AutoShotgunGuy/asgzg1.png" id="17_a5bos"]
+[ext_resource type="Texture2D" uid="uid://htx1si6uej8" path="res://Assets/Sprites/AutoShotgunGuy/asgze1.png" id="18_nqbqp"]
+[ext_resource type="Texture2D" uid="uid://ccot3p6x608r6" path="res://Assets/Sprites/AutoShotgunGuy/asgzf1.png" id="19_yej06"]
+[ext_resource type="Texture2D" uid="uid://ctpcip57j5111" path="res://Assets/Sprites/AutoShotgunGuy/asgza1.png" id="20_jrafo"]
+[ext_resource type="Texture2D" uid="uid://dbnn5hpiwq8bj" path="res://Assets/Sprites/AutoShotgunGuy/asgzb1.png" id="21_4xsb3"]
+[ext_resource type="Texture2D" uid="uid://b11naawjvy856" path="res://Assets/Sprites/AutoShotgunGuy/asgzc1.png" id="22_ctjp3"]
+[ext_resource type="Texture2D" uid="uid://dy6rnd6tm8ep8" path="res://Assets/Sprites/AutoShotgunGuy/asgzd1.png" id="23_jb6q6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehkpb"]
+radius = 0.247
+height = 1.056
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ssi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b6cfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gmslv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iqiwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k36y1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7354o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ionjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p3kkq")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_r6aca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_igfjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_awo40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tc65c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4cacl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_la07w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1taup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qqip2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mr75r")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_a5bos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_a5bos")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_jrafo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_nqbqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yej06")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_jrafo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_4xsb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ctjp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jb6q6")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tb4di"]
+height = 0.874711
+radius = 12.0
+
+[node name="EnemyBasicGrunt" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_qch8c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ehkpb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.520874, 0)
+centered = false
+offset = Vector2(-16, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_2ssi2")
+animation = &"shoot"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 0.25
+max_speed = 5.0
+
+[node name="VisualSense" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -20)
+
+[node name="HearingSense" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HearingSense"]
+shape = SubResource("CylinderShape3D_tb4di")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true

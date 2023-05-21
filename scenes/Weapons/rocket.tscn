@@ -1,0 +1,100 @@
+[gd_scene load_steps=20 format=3 uid="uid://chmyjbnb4377l"]
+
+[ext_resource type="Script" path="res://scenes/Weapons/rocket.gd" id="1_kiblf"]
+[ext_resource type="Texture2D" uid="uid://dx5dg3a3d0pft" path="res://Assets/SeekerBazooka/sprites/exp2a0.png" id="1_l3ean"]
+[ext_resource type="Texture2D" uid="uid://d0u035ut80paa" path="res://Assets/SeekerBazooka/sprites/exp2b0.png" id="2_8aw04"]
+[ext_resource type="Texture2D" uid="uid://bisavixhbhwen" path="res://Assets/SeekerBazooka/sprites/exp2c0.png" id="3_24qkf"]
+[ext_resource type="Texture2D" uid="uid://bgtrxm5g6tkg0" path="res://Assets/SeekerBazooka/sprites/exp2d0.png" id="4_xl8l5"]
+[ext_resource type="Texture2D" uid="uid://c7pdpw00lvkdj" path="res://Assets/SeekerBazooka/sprites/exp2e0.png" id="5_f0dot"]
+[ext_resource type="Texture2D" uid="uid://dnnvuxf8mslkw" path="res://Assets/SeekerBazooka/sprites/exp2f0.png" id="6_uuhqe"]
+[ext_resource type="Texture2D" uid="uid://d2eq5v3phel5e" path="res://Assets/SeekerBazooka/sprites/exp2g0.png" id="7_fedtc"]
+[ext_resource type="Texture2D" uid="uid://cv05ww1wovw6i" path="res://Assets/SeekerBazooka/sprites/exp2h0.png" id="8_sbaec"]
+[ext_resource type="Texture2D" uid="uid://2jxbacivsqc8" path="res://Assets/SeekerBazooka/sprites/exp2i0.png" id="9_a2psr"]
+[ext_resource type="Texture2D" uid="uid://dssv1fwqd3204" path="res://Assets/SeekerBazooka/sprites/exp2j0.png" id="10_cljgn"]
+[ext_resource type="Texture2D" uid="uid://b86aour0ffkcw" path="res://Assets/SeekerBazooka/sprites/exp2k0.png" id="11_jigj7"]
+[ext_resource type="Texture2D" uid="uid://btxkw2qo68o7n" path="res://Assets/SeekerBazooka/sprites/exp2l0.png" id="12_m761p"]
+[ext_resource type="Texture2D" uid="uid://uw3pa52j3oy2" path="res://Assets/SeekerBazooka/sprites/exp2m0.png" id="13_b7d0p"]
+[ext_resource type="Texture2D" uid="uid://cmpqbtaqmpvnb" path="res://Assets/SeekerBazooka/sprites/exp2n0.png" id="14_r5c8y"]
+[ext_resource type="Texture2D" uid="uid://b716h7you4ts5" path="res://Assets/SeekerBazooka/sprites/qroka5.png" id="15_sgjl0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2lob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l3ean")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8aw04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_24qkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xl8l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f0dot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uuhqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fedtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sbaec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a2psr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cljgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jigj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m761p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b7d0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_r5c8y")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sgjl0")
+}],
+"loop": true,
+"name": &"rocket",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4mtr0"]
+radius = 0.105859
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u6e31"]
+radius = 1.09922
+
+[node name="Rocket" type="Area3D"]
+script = ExtResource("1_kiblf")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_h2lob")
+animation = &"rocket"
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4mtr0")
+
+[node name="SplashDamage" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SplashDamage"]
+shape = SubResource("SphereShape3D_u6e31")

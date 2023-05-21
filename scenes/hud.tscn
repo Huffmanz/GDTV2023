@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://dot510ncp1dim"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_dpgeu"]
+[ext_resource type="FontFile" uid="uid://crvnlaim8ruey" path="res://Assets/Font/Shooting Star.otf" id="1_qvka1"]
+
+[sub_resource type="Theme" id="Theme_qr7is"]
+default_font = ExtResource("1_qvka1")
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_dpgeu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qr7is")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Stats" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer/Stats"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="ArmorLabel" type="Label" parent="MarginContainer/Stats/Labels"]
+layout_mode = 2
+text = "Armor"
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/Stats/Labels"]
+layout_mode = 2
+text = "Health"
+
+[node name="Values" type="VBoxContainer" parent="MarginContainer/Stats"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="ArmorValue" type="Label" parent="MarginContainer/Stats/Values"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HealthValue" type="Label" parent="MarginContainer/Stats/Values"]
+layout_mode = 2
+text = "100
+"
+horizontal_alignment = 2
+
+[node name="Ammo" type="VBoxContainer" parent="MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="AmmoValue" type="Label" parent="MarginContainer/Stats/Ammo"]
+layout_mode = 2
+text = "0
+"
+horizontal_alignment = 2

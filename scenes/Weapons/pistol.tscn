@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqadijhj5j706"]
+
+[ext_resource type="Script" path="res://scenes/Weapons/gun.gd" id="1_q0yom"]
+[ext_resource type="Texture2D" uid="uid://bpsf4pouk7plf" path="res://Assets/Sprites/AngledPistol/2pisa0.png" id="1_w7xrd"]
+[ext_resource type="Texture2D" uid="uid://dsmglvmneyhjm" path="res://Assets/Sprites/AngledPistol/2pisb0.png" id="2_wfxpc"]
+[ext_resource type="Texture2D" uid="uid://br7tkyjibddfb" path="res://Assets/Sprites/AngledPistol/2pisf0.png" id="3_8rvws"]
+[ext_resource type="Texture2D" uid="uid://dcjn4aoje20c6" path="res://Assets/Sprites/AngledPistol/2pisd0.png" id="4_eqjmg"]
+[ext_resource type="Texture2D" uid="uid://br5paa5j3nxp1" path="res://Assets/Sprites/AngledPistol/2pisc0.png" id="5_m5jx0"]
+[ext_resource type="Texture2D" uid="uid://cbhflit1pwf83" path="res://Assets/Sprites/AngledPistol/crosshair012.png" id="7_uv6dd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8vwf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w7xrd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wfxpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8rvws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eqjmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m5jx0")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 12.0
+}]
+
+[node name="Pistol" type="Node3D"]
+script = ExtResource("1_q0yom")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(-186, 39)
+rotation = 3.14159
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_u8vwf")
+animation = &"Shoot"
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
+texture = ExtResource("7_uv6dd")
+
+[node name="GunRays" type="Node3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="GunRays"]
+target_position = Vector3(0, 0, -20)

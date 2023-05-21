@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs317yikuas65"]
+
+[ext_resource type="Script" path="res://scenes/levels/world.gd" id="1_u1sfq"]
+[ext_resource type="PackedScene" uid="uid://crf78ro3yrphp" path="res://scenes/levels/test_level.tscn" id="1_xr2es"]
+[ext_resource type="PackedScene" uid="uid://gvs20fp0b0v1" path="res://scenes/player.tscn" id="2_s2rap"]
+[ext_resource type="PackedScene" uid="uid://dvhrdn1fe5cjq" path="res://scenes/Enemy/enemy_basic_grunt.tscn" id="4_jnb2t"]
+[ext_resource type="PackedScene" uid="uid://dot510ncp1dim" path="res://scenes/hud.tscn" id="5_ee02w"]
+
+[sub_resource type="Environment" id="Environment_juw81"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.037
+
+[sub_resource type="FogMaterial" id="FogMaterial_anwcq"]
+density = 0.2
+emission = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="world" type="Node3D"]
+script = ExtResource("1_u1sfq")
+
+[node name="TestLevel" parent="." instance=ExtResource("1_xr2es")]
+
+[node name="Player" parent="." instance=ExtResource("2_s2rap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305678, -0.0083496, -2.15599)
+
+[node name="EnemyBasicGrunt" parent="." instance=ExtResource("4_jnb2t")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24.1835, 1.15086, 13.4267)
+
+[node name="HUD" parent="." instance=ExtResource("5_ee02w")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_juw81")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+size = Vector3(100, 2, 100)
+material = SubResource("FogMaterial_anwcq")

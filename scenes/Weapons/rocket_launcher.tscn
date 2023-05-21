@@ -1,0 +1,120 @@
+[gd_scene load_steps=19 format=3 uid="uid://d32ysuxihb44y"]
+
+[ext_resource type="Script" path="res://scenes/Weapons/rocket_launcher.gd" id="1_75pis"]
+[ext_resource type="Texture2D" uid="uid://kxutdrle3843" path="res://Assets/SeekerBazooka/sprites/rpgaa0.png" id="2_bfxjx"]
+[ext_resource type="Texture2D" uid="uid://cai0w5i1td7g6" path="res://Assets/SeekerBazooka/sprites/rpgab0.png" id="3_mn7w3"]
+[ext_resource type="Texture2D" uid="uid://bm3csddtswyjb" path="res://Assets/SeekerBazooka/sprites/rpgac0.png" id="4_aix02"]
+[ext_resource type="Texture2D" uid="uid://btqoxxrhmq4q1" path="res://Assets/SeekerBazooka/sprites/rpgad0.png" id="5_qbh7o"]
+[ext_resource type="Texture2D" uid="uid://byeb55dcwdigw" path="res://Assets/SeekerBazooka/sprites/rpgae0.png" id="6_qusej"]
+[ext_resource type="Texture2D" uid="uid://bx7fvnyomyw1a" path="res://Assets/SeekerBazooka/sprites/rpgaf0.png" id="7_bcbv0"]
+[ext_resource type="Texture2D" uid="uid://bn0hrjlgdiynh" path="res://Assets/SeekerBazooka/sprites/rpgag0.png" id="8_8ck78"]
+[ext_resource type="Texture2D" uid="uid://cts2bp8p1hlea" path="res://Assets/SeekerBazooka/sprites/rpgah0.png" id="9_4xycv"]
+[ext_resource type="Texture2D" uid="uid://brb4l5hohrhs6" path="res://Assets/SeekerBazooka/sprites/rpgai0.png" id="10_xqp7w"]
+[ext_resource type="Texture2D" uid="uid://dtr327l2p1rl4" path="res://Assets/SeekerBazooka/sprites/rpgaj0.png" id="11_df01k"]
+[ext_resource type="Texture2D" uid="uid://dkod47k08wn0f" path="res://Assets/SeekerBazooka/sprites/rpgak0.png" id="12_320ig"]
+[ext_resource type="Texture2D" uid="uid://bxs2sti3n5x7h" path="res://Assets/SeekerBazooka/sprites/rpgal0.png" id="13_f11s0"]
+[ext_resource type="Texture2D" uid="uid://dpk3tjumlmkil" path="res://Assets/SeekerBazooka/sprites/rpgam0.png" id="14_3lh4e"]
+[ext_resource type="Texture2D" uid="uid://btxck23m6mas1" path="res://Assets/SeekerBazooka/sprites/rpgan0.png" id="15_pm0i5"]
+[ext_resource type="Texture2D" uid="uid://ds0b6jcfoack4" path="res://Assets/SeekerBazooka/sprites/rpgao0.png" id="16_2o2pq"]
+[ext_resource type="Texture2D" uid="uid://ypughkmleuly" path="res://Assets/SeekerBazooka/crosshair026.png" id="17_ye428"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8vwf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bfxjx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mn7w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aix02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qbh7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qusej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bcbv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8ck78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4xycv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xqp7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_df01k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_320ig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f11s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3lh4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pm0i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2o2pq")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 8.0
+}]
+
+[node name="RocketLauncher" type="Node3D"]
+script = ExtResource("1_75pis")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(41, 40)
+rotation = 3.14159
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_u8vwf")
+animation = &"Shoot"
+frame = 13
+frame_progress = 1.0
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
+texture = ExtResource("17_ye428")
+
+[node name="Marker3D" type="Marker3D" parent="."]
