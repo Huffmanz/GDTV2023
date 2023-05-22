@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://rqtrdn2blpqb"]
+
+[ext_resource type="Script" path="res://scenes/Pickups/weapon_pickup.gd" id="1_s3bsr"]
+[ext_resource type="Texture2D" uid="uid://dbp7hrbw3nl51" path="res://Assets/Bearkiller/sprites/dbkfa0.png" id="2_km1w0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqfp2"]
+radius = 0.41527
+
+[node name="ShotgunPickup" type="Area3D"]
+script = ExtResource("1_s3bsr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_km1w0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_aqfp2")

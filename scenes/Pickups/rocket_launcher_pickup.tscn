@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://f014466kv8km"]
+
+[ext_resource type="Script" path="res://scenes/Pickups/weapon_pickup.gd" id="1_fxi43"]
+[ext_resource type="PackedScene" uid="uid://d32ysuxihb44y" path="res://scenes/Weapons/rocket_launcher.tscn" id="2_itwqs"]
+[ext_resource type="Texture2D" uid="uid://cnno35vtr632s" path="res://Assets/SeekerBazooka/sprites/rpgaz0.png" id="3_wadoc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqfp2"]
+radius = 0.41527
+
+[node name="RocketLauncherPickup" type="Area3D"]
+script = ExtResource("1_fxi43")
+weapon = ExtResource("2_itwqs")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_wadoc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_aqfp2")

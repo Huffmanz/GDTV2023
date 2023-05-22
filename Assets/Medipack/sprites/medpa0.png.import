@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq5mv62odpwa4"
-path.s3tc="res://.godot/imported/usmga0.png-396098b8b75b23348cd395930d2c12eb.s3tc.ctex"
+uid="uid://jdxe2372neak"
+path.s3tc="res://.godot/imported/medpa0.png-7bc3ad979f8c53ac8a42741d63e83eb3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Uzi/sprites/usmga0.png"
-dest_files=["res://.godot/imported/usmga0.png-396098b8b75b23348cd395930d2c12eb.s3tc.ctex"]
+source_file="res://Assets/Medipack/sprites/medpa0.png"
+dest_files=["res://.godot/imported/medpa0.png-7bc3ad979f8c53ac8a42741d63e83eb3.s3tc.ctex"]
 
 [params]
 

@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs317yikuas65"]
+[gd_scene load_steps=12 format=3 uid="uid://bs317yikuas65"]
 
 [ext_resource type="Script" path="res://scenes/levels/world.gd" id="1_u1sfq"]
 [ext_resource type="PackedScene" uid="uid://crf78ro3yrphp" path="res://scenes/levels/test_level.tscn" id="1_xr2es"]
 [ext_resource type="PackedScene" uid="uid://gvs20fp0b0v1" path="res://scenes/player.tscn" id="2_s2rap"]
 [ext_resource type="PackedScene" uid="uid://dvhrdn1fe5cjq" path="res://scenes/Enemy/enemy_basic_grunt.tscn" id="4_jnb2t"]
 [ext_resource type="PackedScene" uid="uid://dot510ncp1dim" path="res://scenes/hud.tscn" id="5_ee02w"]
+[ext_resource type="PackedScene" uid="uid://dfmnh2jhb0cup" path="res://scenes/Pickups/health_pickup.tscn" id="6_s32sy"]
+[ext_resource type="PackedScene" uid="uid://rqtrdn2blpqb" path="res://scenes/Pickups/shotgun_pickup.tscn" id="7_utkqe"]
+[ext_resource type="PackedScene" uid="uid://c3s3mmq0sxtcw" path="res://scenes/Pickups/uzi_pickup.tscn" id="8_hcd3v"]
+[ext_resource type="PackedScene" uid="uid://f014466kv8km" path="res://scenes/Pickups/rocket_launcher_pickup.tscn" id="9_1cbjv"]
 
 [sub_resource type="Environment" id="Environment_juw81"]
 volumetric_fog_enabled = true
@@ -33,3 +37,15 @@ environment = SubResource("Environment_juw81")
 [node name="FogVolume" type="FogVolume" parent="."]
 size = Vector3(100, 2, 100)
 material = SubResource("FogMaterial_anwcq")
+
+[node name="HealthPickup" parent="." instance=ExtResource("6_s32sy")]
+transform = Transform3D(0.650986, 0, 0.75909, 0, 1, 0, -0.75909, 0, 0.650986, 0.785612, 0.28301, -6.38245)
+
+[node name="WeaponPickup" parent="." instance=ExtResource("7_utkqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128685, 0.374634, -9.19271)
+
+[node name="WeaponPickup2" parent="." instance=ExtResource("8_hcd3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89255, 0.186613, -9.83622)
+
+[node name="WeaponPickup3" parent="." instance=ExtResource("9_1cbjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21746, 0.258971, -9.88416)

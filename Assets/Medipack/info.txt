@@ -1,0 +1,6 @@
+Name: Medipack
+Type: Health
+Palette: Custom
+Summon: Medipack
+Use type: Instant
+Duration: Instant

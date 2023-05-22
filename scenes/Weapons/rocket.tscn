@@ -76,7 +76,7 @@ animations = [{
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4mtr0"]
-radius = 0.105859
+radius = 0.35
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6e31"]
 radius = 1.09922

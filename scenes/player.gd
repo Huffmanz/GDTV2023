@@ -14,7 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var rocket_launcher = preload("res://scenes/Weapons/rocket_launcher.tscn")
 
 var current_gun = 0
-@onready var carried_guns = [pistol, shotgun, uzi, rocket_launcher]
+#@onready var carried_guns = [pistol, shotgun, uzi, rocket_launcher]
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -29,20 +29,20 @@ func _unhandled_input(event):
 func change_gun(gun):
 	if $Pivot/Gun.get_child_count() > 0:
 		$Pivot/Gun.get_child(0).queue_free()
-	var new_gun = carried_guns[current_gun].instantiate()
+	var new_gun = PlayerStats.carried_guns[current_gun].instantiate()
 	$Pivot/Gun.add_child(new_gun)
 	PlayerStats.current_gun = new_gun.name
 	
 func _process(delta):
 	if Input.is_action_just_pressed("next_gun"):
 		current_gun += 1
-		if current_gun > len(carried_guns) - 1:
+		if current_gun > len(PlayerStats.carried_guns) - 1:
 			current_gun = 0
 		change_gun(current_gun)
 	elif Input.is_action_just_pressed("previous_gun"):
 		current_gun -= 1
 		if current_gun < 0:
-			current_gun = len(carried_guns) - 1
+			current_gun = len(PlayerStats.carried_guns) - 1
 		change_gun(current_gun)
 
 func _physics_process(delta):

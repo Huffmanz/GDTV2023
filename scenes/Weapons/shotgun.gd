@@ -7,8 +7,6 @@ extends Node3D
 var can_shoot = true
 var damage = 8
 
-
-
 func _ready():
 	gun_sprite.play("Idle")
 	

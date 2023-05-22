@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3s3mmq0sxtcw"]
+
+[ext_resource type="Script" path="res://scenes/Pickups/weapon_pickup.gd" id="1_0h3vn"]
+[ext_resource type="PackedScene" uid="uid://h8751gx7pk30" path="res://scenes/Weapons/uzi.tscn" id="2_24sfp"]
+[ext_resource type="Texture2D" uid="uid://bq5mv62odpwa4" path="res://Assets/Uzi/sprites/usmga0.png" id="3_d4a25"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqfp2"]
+radius = 0.41527
+
+[node name="UziPickup" type="Area3D"]
+script = ExtResource("1_0h3vn")
+weapon = ExtResource("2_24sfp")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_d4a25")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_aqfp2")
