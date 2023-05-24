@@ -13,7 +13,8 @@ func _ready():
 func check_hit():
 	for ray in gun_rays:
 		if ray.is_colliding():
-			if ray.get_collider().is_in_group("Enemy"):
+			var collider = ray.get_collider()
+			if ray.get_collider() is HurboxComponent:
 				ray.get_collider().take_damage(damage)
 				var new_blood = blood.instantiate()
 				get_tree().root.add_child(new_blood)

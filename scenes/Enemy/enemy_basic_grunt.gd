@@ -30,18 +30,15 @@ func _ready():
 	hearing_sense.body_entered.connect(hearing_sense_on_body_entered)
 	shoot_timer.timeout.connect(on_shoot_timer_timeout)
 	GameEvents.enemy_spawned
-			
-func take_damage(dmg_amount):
-	health -= dmg_amount
-	if health <= 0:
-		death()
-		return
+	$HurtboxComponent.hit.connect(on_hit)
+	$HealthComponent.died.connect(on_death)
+	
+func on_hit():
 	move = false
 	$AnimatedSprite3D.play("hit")
 	await $AnimatedSprite3D.animation_finished
 	move = true
-	
-	
+				
 func _physics_process(delta):
 	if dead:
 		return
@@ -66,7 +63,6 @@ func look_at_player():
 	if visual_sense.is_colliding():
 		if visual_sense.get_collider().is_in_group("Player"):
 			searching = true
-			print("I see you")
 		else:
 			searching = false
 			var check_hear = hearing_sense.get_overlapping_bodies()
@@ -78,11 +74,10 @@ func look_at_player():
 func find_path(target):
 	nav_agent.target_position = target
 	
-func death():
+func on_death():
 	dead = true
-
 	$CollisionShape3D.disabled = true
-	if health < -20:
+	if $HealthComponent.current_health < -20:
 		$AnimatedSprite3D.play("explode")
 	else:
 		$AnimatedSprite3D.play("die")
@@ -104,7 +99,6 @@ func shoot():
 	
 func hearing_sense_on_body_entered(body):
 	if body.is_in_group("Player"):
-		print("i hear you")
 		searching = true
 	
 func on_shoot_timer_timeout():

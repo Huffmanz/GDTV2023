@@ -7,4 +7,4 @@ func _ready():
 
 func on_level_generated():
 	current_level += 1
-	GameEvents.emit_level_changed(0)
+	GameEvents.emit_level_changed(current_level)

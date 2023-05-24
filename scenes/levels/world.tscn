@@ -27,7 +27,7 @@ script = ExtResource("1_u1sfq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305678, -0.0083496, -2.15599)
 
 [node name="EnemyBasicGrunt" parent="." instance=ExtResource("4_jnb2t")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24.1835, 1.15086, 13.4267)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.56177, 1.15086, 13.4267)
 
 [node name="HUD" parent="." instance=ExtResource("5_ee02w")]
 

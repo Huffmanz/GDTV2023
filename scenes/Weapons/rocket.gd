@@ -5,17 +5,17 @@ var speed = 20
 var rocket_damage = 25
 
 func _ready():
-	body_entered.connect(on_body_entered)
+	area_entered.connect(on_body_entered)
 	$AnimatedSprite3D.play("rocket")
 
 func deal_damage():
-	var enemies = get_overlapping_bodies()
+	var enemies = get_overlapping_areas()
 	for body in enemies:
-		if body.is_in_group("Enemy"):
+		if body is HurboxComponent:
 			body.take_damage(rocket_damage)
-	enemies = splash_damage.get_overlapping_bodies()
+	enemies = splash_damage.get_overlapping_areas()
 	for body in enemies:
-		if body.is_in_group("Enemy"):
+		if body is HurboxComponent:
 			body.take_damage(rocket_damage)
 	
 func _process(delta):

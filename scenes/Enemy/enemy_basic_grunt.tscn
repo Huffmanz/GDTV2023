@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://dvhrdn1fe5cjq"]
+[gd_scene load_steps=30 format=3 uid="uid://dvhrdn1fe5cjq"]
 
 [ext_resource type="Texture2D" uid="uid://bqxshlyleruwb" path="res://Assets/Sprites/AutoShotgunGuy/asgzh0.png" id="1_b6cfp"]
 [ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_qch8c"]
+[ext_resource type="PackedScene" uid="uid://b0j0uxpxd1rpd" path="res://scenes/Components/hurtbox_component.tscn" id="2_bpesa"]
+[ext_resource type="PackedScene" uid="uid://dbffnewcyr45q" path="res://scenes/Components/health_component.tscn" id="2_fmh4y"]
 [ext_resource type="Texture2D" uid="uid://c3kklhi88sohm" path="res://Assets/Sprites/AutoShotgunGuy/asgzi0.png" id="2_gmslv"]
 [ext_resource type="Texture2D" uid="uid://tbxw6oqhtpeu" path="res://Assets/Sprites/AutoShotgunGuy/asgzj0.png" id="3_iqiwt"]
 [ext_resource type="Texture2D" uid="uid://djckmsamfm8vg" path="res://Assets/Sprites/AutoShotgunGuy/asgzk0.png" id="4_k36y1"]
@@ -26,8 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://dy6rnd6tm8ep8" path="res://Assets/Sprites/AutoShotgunGuy/asgzd1.png" id="23_jb6q6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehkpb"]
-radius = 0.247
-height = 1.056
+radius = 0.513905
+height = 2.131
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ssi2"]
 animations = [{
@@ -142,16 +144,26 @@ height = 0.874711
 radius = 12.0
 
 [node name="EnemyBasicGrunt" type="CharacterBody3D" groups=["Enemy"]]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
-collision_mask = 3
 script = ExtResource("1_qch8c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520127, 0)
+shape = SubResource("CapsuleShape3D_ehkpb")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_fmh4y")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_bpesa")]
+collision_layer = 5
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582011, 0)
 shape = SubResource("CapsuleShape3D_ehkpb")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.520874, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.520874, 0)
 centered = false
 offset = Vector2(-16, 0)
 billboard = 2
@@ -170,6 +182,8 @@ max_speed = 5.0
 target_position = Vector3(0, 0, -20)
 
 [node name="HearingSense" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HearingSense"]
 shape = SubResource("CylinderShape3D_tb4di")
