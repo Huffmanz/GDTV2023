@@ -19,10 +19,17 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://Scripts/PlayerStats.gd"
 DamageOverlay="*res://scenes/Effects/damage_overlay.tscn"
+EnemyManager="*res://scenes/Managers/enemy_manager.tscn"
+GameEvents="*res://scenes/autoload/game_events.tscn"
+PlayerManager="*res://scenes/Managers/player_manager.tscn"
 
 [dotnet]
 
 project/assembly_name="GDTV2023"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/tbloader/plugin.cfg")
 
 [input]
 

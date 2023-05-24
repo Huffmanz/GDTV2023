@@ -127,31 +127,39 @@ texture = ExtResource("16_fxhes")
 [node name="RayCast3D" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(1, 0, 0, 0, 0.99863, 0.052336, 0, -0.052336, 0.99863, 0, 0, 0)
 target_position = Vector3(0, 0, -20)
+collision_mask = 5
 
 [node name="RayCast3D2" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(1, 0, 0, 0, 0.99863, -0.052336, 0, 0.052336, 0.99863, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 5
 
 [node name="RayCast3D3" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, 0.99863, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
+collision_mask = 5
 
 [node name="RayCast3D4" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(0.99863, 0, -0.052336, 0, 1, 0, 0.052336, 0, 0.99863, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 5
 
 [node name="RayCast3D5" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(0.999657, 0.000685233, -0.026168, 0, 0.999657, 0.0261769, 0.0261769, -0.026168, 0.999315, 0, 0, 0)
 target_position = Vector3(0, 0, -20)
+collision_mask = 5
 
 [node name="RayCast3D6" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(0.999657, -0.000685233, 0.026168, 0, 0.999657, 0.0261769, -0.0261769, -0.026168, 0.999315, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 5
 
 [node name="RayCast3D7" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(0.999657, 0.000685233, 0.026168, 0, 0.999657, -0.0261769, -0.0261769, 0.026168, 0.999315, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
+collision_mask = 5
 
 [node name="RayCast3D8" type="RayCast3D" parent="GunRays"]
 transform = Transform3D(0.999657, -0.000685233, -0.026168, 0, 0.999657, -0.0261769, 0.0261769, 0.026168, 0.999315, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 5

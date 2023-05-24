@@ -29,7 +29,7 @@ func _ready():
 	$AnimatedSprite3D.play("walking")
 	hearing_sense.body_entered.connect(hearing_sense_on_body_entered)
 	shoot_timer.timeout.connect(on_shoot_timer_timeout)
-	
+	GameEvents.enemy_spawned
 			
 func take_damage(dmg_amount):
 	health -= dmg_amount
@@ -87,6 +87,7 @@ func death():
 	else:
 		$AnimatedSprite3D.play("die")
 	await $AnimatedSprite3D.animation_finished
+	GameEvents.emit_enemy_died()
 	queue_free()
 	#$AnimatedSprite3D.billboard = 0
 	

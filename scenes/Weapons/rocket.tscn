@@ -82,6 +82,7 @@ radius = 0.35
 radius = 1.09922
 
 [node name="Rocket" type="Area3D"]
+collision_layer = 5
 script = ExtResource("1_kiblf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -95,6 +96,7 @@ animation = &"rocket"
 shape = SubResource("SphereShape3D_4mtr0")
 
 [node name="SplashDamage" type="Area3D" parent="."]
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SplashDamage"]
 shape = SubResource("SphereShape3D_u6e31")
