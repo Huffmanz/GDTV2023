@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgtpajx7t1caj"]
+
+[ext_resource type="PackedScene" uid="uid://c12kq321shw5w" path="res://Assets/Levels/Pandemonium/PandemoniumModular.glb" id="1_5dgix"]
+
+[node name="PandemoniumModular" instance=ExtResource("1_5dgix")]

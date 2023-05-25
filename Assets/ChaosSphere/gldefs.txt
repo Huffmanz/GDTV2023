@@ -1,0 +1,12 @@
+PulseLight ChaosSphere
+{
+Color 10.0 10.0 10.0
+Size 50
+SecondarySize 56
+Interval 1.0
+}
+
+Object ChaosSphere
+{
+Frame CHAO { Light ChaosSphere }
+}

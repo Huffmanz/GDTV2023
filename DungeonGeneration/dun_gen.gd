@@ -5,7 +5,7 @@ extends Node3D
 @onready var grid_map : GridMap = $GridMap
 
 @export var start : bool = false : set = set_start
-
+@export var ModularCells: PackedScene = preload("res://Assets/Levels/doom_cell_2.tscn")
 func set_start(val:bool)->void:
 	if Engine.is_editor_hint():
 		await generate_full()
@@ -44,12 +44,15 @@ func get_random_position_in_room(room: Vector3) -> Vector3:
 	var idx = randi_range(0, room_tiles[room_idx].size()-1)
 	return room_tiles[room_idx][idx]
 
-func get_room_except(position: Vector3) -> Vector3:
+func get_room_except(position: Vector3, center: bool = false) -> Vector3:
 	var room = position
 	while room == position:
 		room = get_random_room()
 	#get random point in room
-	return get_random_position_in_room(room)
+	if center:
+		return room
+	else:
+		return get_random_position_in_room(room)
 	#return room 
 
 func get_room_futherest_from(position: Vector3):
@@ -93,6 +96,7 @@ func visualize_border():
 
 func generate_full():
 	await generate()
+	$NavigationRegion3D/DunMesh.dun_cell_scene = ModularCells
 	$NavigationRegion3D/DunMesh.create_dungeon()
 	await $NavigationRegion3D/DunMesh.generation_complete
 	print("Level Generated")

@@ -29,7 +29,7 @@ func _ready():
 	$AnimatedSprite3D.play("walking")
 	hearing_sense.body_entered.connect(hearing_sense_on_body_entered)
 	shoot_timer.timeout.connect(on_shoot_timer_timeout)
-	GameEvents.enemy_spawned
+	GameEvents.emit_enemy_spawned()
 	$HurtboxComponent.hit.connect(on_hit)
 	$HealthComponent.died.connect(on_death)
 	

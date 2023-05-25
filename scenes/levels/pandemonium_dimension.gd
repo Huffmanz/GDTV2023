@@ -5,6 +5,7 @@ extends Node3D
 @export var chaos_sphere_scene: PackedScene = preload("res://scenes/chaos_sphere.tscn")
 var player
 var player_room: Vector3 = Vector3.ZERO
+var enemies_remaining: int = -1
 
 func _ready():
 	dun_gen.generate_full()
@@ -13,12 +14,21 @@ func _ready():
 	add_child(player)
 	player_room = dun_gen.get_player_spawn()
 	player.set_position(dun_gen.map_to_world(player_room))
-	for i in range(10):
+	var enemies_to_spawn = EnemyManager.enemies_spawned - EnemyManager.enemies_died
+	GameEvents.enemy_spawned.connect(on_enemy_spawned)
+	GameEvents.enemy_died.connect(on_enemy_died)
+	for i in range(EnemyManager.enemies_spawned - EnemyManager.enemies_died):
 		var new_enemy = enemy_scene.instantiate()
 		add_child(new_enemy)
 		var enemy_room = dun_gen.get_room_except(player_room)
 		new_enemy.set_position(dun_gen.map_to_world(enemy_room))
-	var chaos_sphere = chaos_sphere_scene.instantiate()
-	add_child(chaos_sphere)
-	var room = dun_gen.get_room_except(player_room, true)
-	chaos_sphere.set_position(dun_gen.map_to_world(room))
+	
+func _process(delta):
+	if enemies_remaining == 0:
+		LevelManager.change_levels()
+
+func on_enemy_spawned():
+	enemies_remaining+=1
+	
+func on_enemy_died():
+	enemies_remaining-=1

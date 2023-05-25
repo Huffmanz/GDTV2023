@@ -1,0 +1,13 @@
+Name: ChaosSphere
+Connection: Hexen Ending Screen
+Palette: Custom
+Summon: Chaossphereholder
+Ambient Sound: No
+De-/Activatable: No
+Destroyable: No
+Special Effects: No
+ACS: No
+
+Submitted: Salahmander
+Decorate: Salahmander
+Sprites: EttinGrinder, Salahmander, MagicWazard
