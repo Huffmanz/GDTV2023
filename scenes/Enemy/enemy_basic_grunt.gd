@@ -35,9 +35,11 @@ func _ready():
 	
 func on_hit():
 	move = false
+	$HurtAudioPlayer.play_random()
 	$AnimatedSprite3D.play("hit")
 	await $AnimatedSprite3D.animation_finished
 	move = true
+	
 				
 func _physics_process(delta):
 	if dead:
@@ -76,10 +78,13 @@ func find_path(target):
 	
 func on_death():
 	dead = true
+	
 	$CollisionShape3D.disabled = true
 	if $HealthComponent.current_health < -20:
+		$GibAudioPlayer.play_random()
 		$AnimatedSprite3D.play("explode")
 	else:
+		$DeathAudioPlayer.play_random()
 		$AnimatedSprite3D.play("die")
 	await $AnimatedSprite3D.animation_finished
 	GameEvents.emit_enemy_died()
@@ -88,6 +93,7 @@ func on_death():
 	
 func shoot():
 	if searching and not dead and not shooting:
+		$FireAudioPlayer.play_random()
 		$AnimatedSprite3D.play("shoot")
 		shooting = true
 		await $AnimatedSprite3D.frame_changed

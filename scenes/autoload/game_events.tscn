@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4y7k3upvg0j"]
+[gd_scene load_steps=8 format=3 uid="uid://c4y7k3upvg0j"]
 
 [ext_resource type="Script" path="res://scenes/autoload/game_events.gd" id="1_pfpcv"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="2_xdg6b"]
+[ext_resource type="AudioStream" uid="uid://clbom37ueikl1" path="res://Assets/sfx/Pickups/impactPlank_medium_000.ogg" id="3_2b81w"]
+[ext_resource type="AudioStream" uid="uid://dyw3jsle3euj2" path="res://Assets/sfx/Pickups/impactPlank_medium_001.ogg" id="4_mq4gg"]
+[ext_resource type="AudioStream" uid="uid://dfltm322yojku" path="res://Assets/sfx/Pickups/impactPlank_medium_002.ogg" id="5_s08k3"]
+[ext_resource type="AudioStream" uid="uid://ch7h48e7tq7kf" path="res://Assets/sfx/Pickups/impactPlank_medium_003.ogg" id="6_tahok"]
+[ext_resource type="AudioStream" uid="uid://cy7fk1ff7bhss" path="res://Assets/sfx/Pickups/impactPlank_medium_004.ogg" id="7_31wh5"]
 
 [node name="GameEvents" type="Node"]
 script = ExtResource("1_pfpcv")
+
+[node name="PickupAudioPlayer" parent="." instance=ExtResource("2_xdg6b")]
+volume_db = 8.163
+max_db = 5.866
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("3_2b81w"), ExtResource("4_mq4gg"), ExtResource("5_s08k3"), ExtResource("6_tahok"), ExtResource("7_31wh5")])

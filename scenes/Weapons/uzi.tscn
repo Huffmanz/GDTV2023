@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://h8751gx7pk30"]
+[gd_scene load_steps=9 format=3 uid="uid://h8751gx7pk30"]
 
 [ext_resource type="Script" path="res://scenes/Weapons/gun.gd" id="1_4ivv8"]
 [ext_resource type="Texture2D" uid="uid://cuyksum41uoet" path="res://Assets/Uzi/sprites/uziga0.png" id="2_1u5fq"]
 [ext_resource type="Texture2D" uid="uid://bt6po8u3dwk6i" path="res://Assets/Uzi/sprites/uzigb0.png" id="3_hfku5"]
 [ext_resource type="Texture2D" uid="uid://bxa54dbseiy1o" path="res://Assets/Uzi/sprites/uzigc0.png" id="4_feqxm"]
 [ext_resource type="Texture2D" uid="uid://c18mrjhqopfjh" path="res://Assets/Uzi/crosshair002.png" id="5_ag8kl"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="6_0yfn2"]
+[ext_resource type="AudioStream" uid="uid://bgbdk6hdvicec" path="res://Assets/Uzi/sounds/uzifir.ogg" id="7_wfb1p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vwf"]
 animations = [{
@@ -79,5 +81,8 @@ collide_with_areas = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
+
+[node name="FireAudioPlayer" parent="." instance=ExtResource("6_0yfn2")]
+streams = Array[AudioStream]([ExtResource("7_wfb1p")])
 
 [connection signal="timeout" from="Timer" to="." method="on_Timer_timeout"]

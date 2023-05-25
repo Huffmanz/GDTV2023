@@ -29,6 +29,7 @@ func drop_item():
 	var drop_instance = drops.pickup[chosen_item].instantiate()
 	get_tree().get_first_node_in_group("Level").add_child(drop_instance)
 	var spawn_position = (owner as Node3D).global_position 
+	spawn_position.y=1.5
 	drop_instance.global_position = spawn_position
 	
 	

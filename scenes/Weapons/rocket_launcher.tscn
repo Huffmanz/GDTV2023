@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d32ysuxihb44y"]
+[gd_scene load_steps=21 format=3 uid="uid://d32ysuxihb44y"]
 
 [ext_resource type="Script" path="res://scenes/Weapons/rocket_launcher.gd" id="1_75pis"]
 [ext_resource type="Texture2D" uid="uid://kxutdrle3843" path="res://Assets/SeekerBazooka/sprites/rpgaa0.png" id="2_bfxjx"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://btxck23m6mas1" path="res://Assets/SeekerBazooka/sprites/rpgan0.png" id="15_pm0i5"]
 [ext_resource type="Texture2D" uid="uid://ds0b6jcfoack4" path="res://Assets/SeekerBazooka/sprites/rpgao0.png" id="16_2o2pq"]
 [ext_resource type="Texture2D" uid="uid://ypughkmleuly" path="res://Assets/SeekerBazooka/crosshair026.png" id="17_ye428"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="18_8si77"]
+[ext_resource type="AudioStream" uid="uid://br5nshm1c3hhk" path="res://Assets/SeekerBazooka/sounds/seeklaun.wav" id="19_bbtdw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vwf"]
 animations = [{
@@ -118,3 +120,6 @@ grow_vertical = 2
 texture = ExtResource("17_ye428")
 
 [node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="FireSoundPlayer" parent="." instance=ExtResource("18_8si77")]
+streams = Array[AudioStream]([ExtResource("19_bbtdw")])

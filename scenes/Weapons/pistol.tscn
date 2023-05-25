@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqadijhj5j706"]
+[gd_scene load_steps=11 format=3 uid="uid://dqadijhj5j706"]
 
 [ext_resource type="Script" path="res://scenes/Weapons/gun.gd" id="1_q0yom"]
 [ext_resource type="Texture2D" uid="uid://bpsf4pouk7plf" path="res://Assets/Sprites/AngledPistol/2pisa0.png" id="1_w7xrd"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dcjn4aoje20c6" path="res://Assets/Sprites/AngledPistol/2pisd0.png" id="4_eqjmg"]
 [ext_resource type="Texture2D" uid="uid://br5paa5j3nxp1" path="res://Assets/Sprites/AngledPistol/2pisc0.png" id="5_m5jx0"]
 [ext_resource type="Texture2D" uid="uid://cbhflit1pwf83" path="res://Assets/Sprites/AngledPistol/crosshair012.png" id="7_uv6dd"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="8_avcl2"]
+[ext_resource type="AudioStream" uid="uid://b34efd5exq1nl" path="res://Assets/Pistol/sounds/coltfire.wav" id="9_6dne0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vwf"]
 animations = [{
@@ -81,3 +83,6 @@ texture = ExtResource("7_uv6dd")
 target_position = Vector3(0, 0, -20)
 collision_mask = 4
 collide_with_areas = true
+
+[node name="FireAudioPlayer" parent="." instance=ExtResource("8_avcl2")]
+streams = Array[AudioStream]([ExtResource("9_6dne0")])

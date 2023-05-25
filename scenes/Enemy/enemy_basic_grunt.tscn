@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dvhrdn1fe5cjq"]
+[gd_scene load_steps=37 format=3 uid="uid://dvhrdn1fe5cjq"]
 
 [ext_resource type="Texture2D" uid="uid://bqxshlyleruwb" path="res://Assets/Sprites/AutoShotgunGuy/asgzh0.png" id="1_b6cfp"]
 [ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_qch8c"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cspyhuefay1pb" path="res://scenes/Pickups/item_drop_component.tscn" id="3_ckgu7"]
 [ext_resource type="Texture2D" uid="uid://tbxw6oqhtpeu" path="res://Assets/Sprites/AutoShotgunGuy/asgzj0.png" id="3_iqiwt"]
 [ext_resource type="Texture2D" uid="uid://djckmsamfm8vg" path="res://Assets/Sprites/AutoShotgunGuy/asgzk0.png" id="4_k36y1"]
-[ext_resource type="Resource" uid="uid://bmjhh31jwy3jm" path="res://Resources/normal_enemy.tres" id="4_s4s7y"]
+[ext_resource type="Resource" uid="uid://dwl2mxbweq5xf" path="res://Resources/normal_enemy.tres" id="4_s4s7y"]
 [ext_resource type="Texture2D" uid="uid://cbo8ebrdbtwss" path="res://Assets/Sprites/AutoShotgunGuy/asgzl0.png" id="5_7354o"]
 [ext_resource type="Texture2D" uid="uid://bjqo6b87njx1k" path="res://Assets/Sprites/AutoShotgunGuy/asgzm0.png" id="6_ionjq"]
 [ext_resource type="Texture2D" uid="uid://dswf7j44d8o2a" path="res://Assets/Sprites/AutoShotgunGuy/asgzn0.png" id="7_p3kkq"]
@@ -28,6 +28,11 @@
 [ext_resource type="Texture2D" uid="uid://dbnn5hpiwq8bj" path="res://Assets/Sprites/AutoShotgunGuy/asgzb1.png" id="21_4xsb3"]
 [ext_resource type="Texture2D" uid="uid://b11naawjvy856" path="res://Assets/Sprites/AutoShotgunGuy/asgzc1.png" id="22_ctjp3"]
 [ext_resource type="Texture2D" uid="uid://dy6rnd6tm8ep8" path="res://Assets/Sprites/AutoShotgunGuy/asgzd1.png" id="23_jb6q6"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="29_0rvnm"]
+[ext_resource type="AudioStream" uid="uid://bubk8tmex268n" path="res://Assets/AutoShotGunGuy/dsasgfir.ogg" id="30_i83wk"]
+[ext_resource type="AudioStream" uid="uid://wc53km3swunq" path="res://Assets/sfx/allypain.ogg" id="31_fmck6"]
+[ext_resource type="AudioStream" uid="uid://bs6cm0jdnsjxq" path="res://Assets/sfx/allydie.ogg" id="32_iih03"]
+[ext_resource type="AudioStream" uid="uid://d4hqptigavxtg" path="res://Assets/sfx/big-impact-blood-3.wav" id="33_a7rq4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehkpb"]
 radius = 0.513905
@@ -198,3 +203,15 @@ shape = SubResource("CylinderShape3D_tb4di")
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.5
 autostart = true
+
+[node name="FireAudioPlayer" parent="." instance=ExtResource("29_0rvnm")]
+streams = Array[AudioStream]([ExtResource("30_i83wk")])
+
+[node name="HurtAudioPlayer" parent="." instance=ExtResource("29_0rvnm")]
+streams = Array[AudioStream]([ExtResource("31_fmck6")])
+
+[node name="DeathAudioPlayer" parent="." instance=ExtResource("29_0rvnm")]
+streams = Array[AudioStream]([ExtResource("32_iih03")])
+
+[node name="GibAudioPlayer" parent="." instance=ExtResource("29_0rvnm")]
+streams = Array[AudioStream]([ExtResource("33_a7rq4")])

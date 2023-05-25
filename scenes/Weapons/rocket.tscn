@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://chmyjbnb4377l"]
+[gd_scene load_steps=22 format=3 uid="uid://chmyjbnb4377l"]
 
 [ext_resource type="Script" path="res://scenes/Weapons/rocket.gd" id="1_kiblf"]
 [ext_resource type="Texture2D" uid="uid://dx5dg3a3d0pft" path="res://Assets/SeekerBazooka/sprites/exp2a0.png" id="1_l3ean"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://uw3pa52j3oy2" path="res://Assets/SeekerBazooka/sprites/exp2m0.png" id="13_b7d0p"]
 [ext_resource type="Texture2D" uid="uid://cmpqbtaqmpvnb" path="res://Assets/SeekerBazooka/sprites/exp2n0.png" id="14_r5c8y"]
 [ext_resource type="Texture2D" uid="uid://b716h7you4ts5" path="res://Assets/SeekerBazooka/sprites/qroka5.png" id="15_sgjl0"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="17_i027p"]
+[ext_resource type="AudioStream" uid="uid://d3aevswy1w4kc" path="res://Assets/SeekerBazooka/sounds/dsqkldth.wav" id="18_svhof"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h2lob"]
 animations = [{
@@ -87,7 +89,7 @@ collision_mask = 5
 script = ExtResource("1_kiblf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.244734)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_h2lob")
@@ -102,3 +104,6 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SplashDamage"]
 shape = SubResource("SphereShape3D_u6e31")
+
+[node name="ExplosionSoundPlayer" parent="." instance=ExtResource("17_i027p")]
+streams = Array[AudioStream]([ExtResource("18_svhof")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c65bwcxbigm17"]
+[gd_scene load_steps=23 format=3 uid="uid://c65bwcxbigm17"]
 
 [ext_resource type="Script" path="res://scenes/Weapons/shotgun.gd" id="1_w3ok7"]
 [ext_resource type="Texture2D" uid="uid://cqvs6h66arhxk" path="res://Assets/Bearkiller/sprites/kfdba0.png" id="2_blfre"]
@@ -16,6 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://dr7poyspxob85" path="res://Assets/Bearkiller/sprites/kfdbo0.png" id="14_h22q2"]
 [ext_resource type="Texture2D" uid="uid://6sht12mocyo1" path="res://Assets/Bearkiller/sprites/kfdbp0.png" id="15_rf6bs"]
 [ext_resource type="Texture2D" uid="uid://bfcorxgjfwr4u" path="res://Assets/Bearkiller/crosshair123.png" id="16_fxhes"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="17_ccin8"]
+[ext_resource type="AudioStream" uid="uid://bo6k51y0xdw58" path="res://Assets/Bearkiller/sounds/CRFIRE.ogg" id="18_4kt70"]
+[ext_resource type="AudioStream" uid="uid://urdj3s6g5f7q" path="res://Assets/Bearkiller/sounds/dscochr1.ogg" id="19_unoh3"]
+[ext_resource type="AudioStream" uid="uid://cfns1p2eg8so1" path="res://Assets/Bearkiller/sounds/dscochr2.ogg" id="20_kam4n"]
+[ext_resource type="AudioStream" uid="uid://bxso3ldnrdsfy" path="res://Assets/Bearkiller/sounds/dscochr3.ogg" id="21_p068w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u8vwf"]
 animations = [{
@@ -171,3 +176,15 @@ transform = Transform3D(0.999657, -0.000685233, -0.026168, 0, 0.999657, -0.02617
 target_position = Vector3(0, 0, -10)
 collision_mask = 5
 collide_with_areas = true
+
+[node name="FireAudioPlayer" parent="." instance=ExtResource("17_ccin8")]
+streams = Array[AudioStream]([ExtResource("18_4kt70")])
+
+[node name="ReloadPlayer" parent="." instance=ExtResource("17_ccin8")]
+streams = Array[AudioStream]([ExtResource("19_unoh3")])
+
+[node name="ReloadPlayer2" parent="." instance=ExtResource("17_ccin8")]
+streams = Array[AudioStream]([ExtResource("20_kam4n")])
+
+[node name="ReloadPlayer3" parent="." instance=ExtResource("17_ccin8")]
+streams = Array[AudioStream]([ExtResource("21_p068w")])

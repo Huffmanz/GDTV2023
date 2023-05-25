@@ -19,4 +19,5 @@ func emit_enemy_died():
 	
 signal item_picked_up(name: String, amount: int)
 func emit_item_picked_up(name: String, amount: int):
+	$PickupAudioPlayer.play_random()
 	item_picked_up.emit(name, amount)

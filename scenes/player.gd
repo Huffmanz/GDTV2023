@@ -19,7 +19,7 @@ var current_gun = 0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	change_gun(0)
-	
+	$FootstepTimer.timeout.connect(on_footstep)
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
@@ -64,3 +64,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+func on_footstep():
+	if velocity != Vector3.ZERO:
+		$FootstepSoundPlayer.play_random()

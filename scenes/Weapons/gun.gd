@@ -31,6 +31,7 @@ func make_flash():
 func _process(delta):
 	if  Input.is_action_pressed("shoot") && can_shoot && PlayerStats.ammo_pistol > 0:
 		gun_sprite.play("Shoot")
+		$FireAudioPlayer.play_random()
 		make_flash()
 		check_hit()
 		PlayerStats.change_pistol_ammo(-1)

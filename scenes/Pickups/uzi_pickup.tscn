@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3s3mmq0sxtcw"]
+[gd_scene load_steps=11 format=3 uid="uid://c3s3mmq0sxtcw"]
 
 [ext_resource type="Script" path="res://scenes/Pickups/weapon_pickup.gd" id="1_0h3vn"]
 [ext_resource type="PackedScene" uid="uid://h8751gx7pk30" path="res://scenes/Weapons/uzi.tscn" id="2_24sfp"]
 [ext_resource type="Texture2D" uid="uid://bq5mv62odpwa4" path="res://Assets/Uzi/sprites/usmga0.png" id="3_d4a25"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="4_6mncv"]
+[ext_resource type="AudioStream" uid="uid://clbom37ueikl1" path="res://Assets/sfx/Pickups/impactPlank_medium_000.ogg" id="5_ejcf6"]
+[ext_resource type="AudioStream" uid="uid://dyw3jsle3euj2" path="res://Assets/sfx/Pickups/impactPlank_medium_001.ogg" id="6_pcb24"]
+[ext_resource type="AudioStream" uid="uid://dfltm322yojku" path="res://Assets/sfx/Pickups/impactPlank_medium_002.ogg" id="7_rg11e"]
+[ext_resource type="AudioStream" uid="uid://ch7h48e7tq7kf" path="res://Assets/sfx/Pickups/impactPlank_medium_003.ogg" id="8_p0khh"]
+[ext_resource type="AudioStream" uid="uid://cy7fk1ff7bhss" path="res://Assets/sfx/Pickups/impactPlank_medium_004.ogg" id="9_odf86"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aqfp2"]
 radius = 0.41527
@@ -20,3 +26,7 @@ texture = ExtResource("3_d4a25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_aqfp2")
+
+[node name="RandomAudioStreamPlayer3D" parent="." instance=ExtResource("4_6mncv")]
+volume_db = 73.628
+streams = Array[AudioStream]([ExtResource("5_ejcf6"), ExtResource("6_pcb24"), ExtResource("7_rg11e"), ExtResource("8_p0khh"), ExtResource("9_odf86")])

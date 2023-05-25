@@ -12,7 +12,7 @@ func launch_projectile():
 	var new_rocket = rocket.instantiate() as Area3D
 	get_tree().root.add_child(new_rocket)
 	new_rocket.global_transform = spawn_location.global_transform
-	
+	$FireSoundPlayer.play_random()
 func _process(delta):
 	if Input.is_action_pressed("shoot") and can_shoot and PlayerStats.ammo_rocket > 0:
 		gun_sprite.play("Shoot")
