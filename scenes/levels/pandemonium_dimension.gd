@@ -25,6 +25,7 @@ func _ready():
 	
 func _process(delta):
 	if enemies_remaining == 0:
+		EnemyManager.reset()
 		LevelManager.change_levels()
 
 func on_enemy_spawned():

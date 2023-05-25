@@ -54,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5386, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3omgt")
-frame_progress = 0.611949
+frame_progress = 0.322715
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 2

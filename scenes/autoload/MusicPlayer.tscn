@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://2i70otbb50q1"]
+
+[ext_resource type="Script" path="res://scenes/autoload/MusicPlayer.gd" id="1_gyere"]
+[ext_resource type="AudioStream" uid="uid://cray3v7baxhl2" path="res://Assets/sfx/The Rush.mp3" id="2_g8c75"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+bus = &"music"
+script = ExtResource("1_gyere")
+normal_music = ExtResource("2_g8c75")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

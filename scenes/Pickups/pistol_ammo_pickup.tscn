@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccgevundbok6x"]
+
+[ext_resource type="Script" path="res://scenes/Pickups/pistol_ammo_pickup.gd" id="1_qudjs"]
+[ext_resource type="Texture2D" uid="uid://dsy5okkfwlxo6" path="res://Assets/Bearkiller/sprites/kfama0.png" id="2_28nli"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqfp2"]
+radius = 0.41527
+
+[node name="PistolAmmoPickup" type="Area3D"]
+script = ExtResource("1_qudjs")
+display_name = "Pistol Ammo"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_28nli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_aqfp2")

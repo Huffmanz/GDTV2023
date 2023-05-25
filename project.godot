@@ -23,6 +23,7 @@ EnemyManager="*res://scenes/Managers/enemy_manager.tscn"
 GameEvents="*res://scenes/autoload/game_events.tscn"
 PlayerManager="*res://scenes/Managers/player_manager.tscn"
 LevelManager="*res://scenes/Managers/level_manager.tscn"
+MusicPlayer="*res://scenes/autoload/MusicPlayer.tscn"
 
 [dotnet]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dot510ncp1dim"]
+[gd_scene load_steps=5 format=3 uid="uid://dot510ncp1dim"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_dpgeu"]
 [ext_resource type="FontFile" uid="uid://crvnlaim8ruey" path="res://Assets/Font/Shooting Star.otf" id="1_qvka1"]
+[ext_resource type="Script" path="res://scenes/UI/PickupInfo.gd" id="3_52d7n"]
 
 [sub_resource type="Theme" id="Theme_qr7is"]
 default_font = ExtResource("1_qvka1")
@@ -30,6 +31,17 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 mouse_filter = 2
 alignment = 2
+
+[node name="PickupInfo" type="Label" parent="MarginContainer/Stats/Labels"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Picked UP STUFF"
+script = ExtResource("3_52d7n")
+
+[node name="RemoveInfoTimer" type="Timer" parent="MarginContainer/Stats/Labels/PickupInfo"]
+wait_time = 2.0
 
 [node name="ArmorLabel" type="Label" parent="MarginContainer/Stats/Labels"]
 layout_mode = 2

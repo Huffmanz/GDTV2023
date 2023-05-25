@@ -16,3 +16,7 @@ func emit_enemy_spawned():
 signal enemy_died()
 func emit_enemy_died():
 	enemy_died.emit()
+	
+signal item_picked_up(name: String, amount: int)
+func emit_item_picked_up(name: String, amount: int):
+	item_picked_up.emit(name, amount)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DropTable" load_steps=6 format=3 uid="uid://dwl2mxbweq5xf"]
+
+[ext_resource type="PackedScene" uid="uid://ccgevundbok6x" path="res://scenes/Pickups/pistol_ammo_pickup.tscn" id="1_1nxiw"]
+[ext_resource type="Script" path="res://Resources/drop_table_resource.gd" id="1_5rbc1"]
+[ext_resource type="PackedScene" uid="uid://rqtrdn2blpqb" path="res://scenes/Pickups/shotgun_pickup.tscn" id="1_07irt"]
+[ext_resource type="PackedScene" uid="uid://dfmnh2jhb0cup" path="res://scenes/Pickups/health_pickup.tscn" id="1_kyicj"]
+[ext_resource type="PackedScene" uid="uid://c3s3mmq0sxtcw" path="res://scenes/Pickups/uzi_pickup.tscn" id="3_w124l"]
+
+[resource]
+script = ExtResource("1_5rbc1")
+drop_chances = Array[float]([20.0, 10.0, 1.0, 1.0])
+pickup = Array[PackedScene]([ExtResource("1_1nxiw"), ExtResource("1_kyicj"), ExtResource("1_07irt"), ExtResource("3_w124l")])

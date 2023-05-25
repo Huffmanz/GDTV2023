@@ -1,12 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://dvhrdn1fe5cjq"]
+[gd_scene load_steps=32 format=3 uid="uid://dvhrdn1fe5cjq"]
 
 [ext_resource type="Texture2D" uid="uid://bqxshlyleruwb" path="res://Assets/Sprites/AutoShotgunGuy/asgzh0.png" id="1_b6cfp"]
 [ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_qch8c"]
 [ext_resource type="PackedScene" uid="uid://b0j0uxpxd1rpd" path="res://scenes/Components/hurtbox_component.tscn" id="2_bpesa"]
 [ext_resource type="PackedScene" uid="uid://dbffnewcyr45q" path="res://scenes/Components/health_component.tscn" id="2_fmh4y"]
 [ext_resource type="Texture2D" uid="uid://c3kklhi88sohm" path="res://Assets/Sprites/AutoShotgunGuy/asgzi0.png" id="2_gmslv"]
+[ext_resource type="PackedScene" uid="uid://cspyhuefay1pb" path="res://scenes/Pickups/item_drop_component.tscn" id="3_ckgu7"]
 [ext_resource type="Texture2D" uid="uid://tbxw6oqhtpeu" path="res://Assets/Sprites/AutoShotgunGuy/asgzj0.png" id="3_iqiwt"]
 [ext_resource type="Texture2D" uid="uid://djckmsamfm8vg" path="res://Assets/Sprites/AutoShotgunGuy/asgzk0.png" id="4_k36y1"]
+[ext_resource type="Resource" uid="uid://bmjhh31jwy3jm" path="res://Resources/normal_enemy.tres" id="4_s4s7y"]
 [ext_resource type="Texture2D" uid="uid://cbo8ebrdbtwss" path="res://Assets/Sprites/AutoShotgunGuy/asgzl0.png" id="5_7354o"]
 [ext_resource type="Texture2D" uid="uid://bjqo6b87njx1k" path="res://Assets/Sprites/AutoShotgunGuy/asgzm0.png" id="6_ionjq"]
 [ext_resource type="Texture2D" uid="uid://dswf7j44d8o2a" path="res://Assets/Sprites/AutoShotgunGuy/asgzn0.png" id="7_p3kkq"]
@@ -152,6 +154,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520127, 0)
 shape = SubResource("CapsuleShape3D_ehkpb")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_fmh4y")]
+
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ckgu7")]
+health_component = NodePath("../HealthComponent")
+chance_to_drop = 0.25
+drops = ExtResource("4_s4s7y")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_bpesa")]
 collision_layer = 5

@@ -8,7 +8,7 @@
 [node name="PhysicalDimension" type="Node3D"]
 script = ExtResource("1_gxtc1")
 
-[node name="DunGen" parent="." instance=ExtResource("2_n32dp")]
+[node name="DunGen" parent="." groups=["Level"] instance=ExtResource("2_n32dp")]
 ModularCells = ExtResource("3_sxarh")
 
 [node name="HUD" parent="." instance=ExtResource("3_qh348")]

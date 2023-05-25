@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ce0sukbhqo1ew" path="res://DungeonGeneration/dun_gen.tscn" id="2_s1b2o"]
 [ext_resource type="PackedScene" uid="uid://dot510ncp1dim" path="res://scenes/hud.tscn" id="3_qtucb"]
 
-[node name="PandemoniumDimension" type="Node3D"]
+[node name="PandemoniumDimension" type="Node3D" groups=["Level"]]
 script = ExtResource("1_dnu3f")
 
 [node name="DunGen" parent="." instance=ExtResource("2_s1b2o")]
