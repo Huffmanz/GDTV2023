@@ -23,27 +23,7 @@ var yellow_key = false
 var current_gun = "Pistol"
 @onready var pistol = preload("res://scenes/Weapons/pistol.tscn")
 @onready var carried_guns = [pistol]
- 
-func reset():
-	var health = 100
-	var max_health = 100
-	var armor = 0
-	var max_armor = 100
-	var ammo_pistol = 999
-	var ammo_rocket = 3
-	var ammo_shells = 10
-	var ammo_uzi = 25
-	var ammo_max_pistol = 999
-	var ammo_max_rocket = 50
-	var ammo_max_shells = 100
-	var ammo_max_plasma = 200
-	var red_key = false
-	var blue_key = false
-	var yellow_key = false
-	var current_gun = "Pistol"
- 
-func _ready():
-	pass
+
 	
 func take_damage(amount):
 	if amount > armor:

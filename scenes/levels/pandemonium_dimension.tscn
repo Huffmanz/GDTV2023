@@ -45,9 +45,7 @@ animations = [{
 script = ExtResource("1_dnu3f")
 
 [node name="DunGen" parent="." instance=ExtResource("2_s1b2o")]
-border_size = 30
-min_room_size = 5
-max_room_size = 8
+border_size = 15
 
 [node name="TimerScreen" type="CanvasLayer" parent="."]
 
