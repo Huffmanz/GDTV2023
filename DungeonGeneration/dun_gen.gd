@@ -16,8 +16,7 @@ func set_border_size(val : int)->void:
 	border_size = val
 	if Engine.is_editor_hint():
 		visualize_border()
-
-var min_room_number: int = 3
+		
 @export var room_number : int = 4
 @export var room_margin : int = 1
 @export var room_recursion : int = 15
@@ -30,47 +29,42 @@ func set_seed(val:String)->void:
 
 var room_tiles : Array[PackedVector3Array] = []
 var room_positions : PackedVector3Array = []
-
+var spawnable_tiles: Array[PackedVector3Array] = []
+var spawnable_rooms: PackedVector3Array = []
+var enemies_in_room: Array[int] = []
 
 func get_random_room() -> Vector3:
-	var idx = randi_range(0, room_positions.size()-1)
+	var idx = randi_range(0, room_positions.size())
 	return room_positions[idx]
 
 func get_random_position_in_room(room: Vector3) -> Vector3:
 	var room_idx=0
-	for i in range(0, room_positions.size()-1):
-		if room_positions[i] == room:
+	for i in range(0, spawnable_rooms.size()):
+		if spawnable_rooms[i] == room:
 			room_idx = i
 			break
-	var idx = randi_range(0, room_tiles[room_idx].size()-1)
-	return room_tiles[room_idx][idx]
+	var idx = randi_range(0, spawnable_tiles[room_idx].size()-1)
+	return spawnable_tiles[room_idx][idx]
 
-func get_room_except(position: Vector3, center: bool = false) -> Vector3:
-	var room = position
-	while room == position:
-		room = get_random_room()
-	#get random point in room
+func get_enemy_room():
+	var min: int = 999
+	var idx: int = 0
+	for i in range(spawnable_rooms.size()):
+		if enemies_in_room[i] < min:
+			idx = i
+			min = enemies_in_room[i]
+	enemies_in_room[idx] = enemies_in_room[idx] + 1
+	return  get_random_position_in_room(spawnable_rooms[idx])
+
+func get_spawnable_room(center: bool = false):
+	var idx = randi_range(0, spawnable_rooms.size()-1)
+	var room = spawnable_rooms[idx]
 	if center:
 		return room
 	else:
 		return get_random_position_in_room(room)
-	#return room 
-
-func get_room_futherest_from(position: Vector3):
-	var distance=Vector3.ZERO
-	var room= Vector3.ZERO
-	for i in room_positions:
-		if distance == Vector3.ZERO:
-			room = i
-			distance = position - i
-		else:
-			if position - i  > i - room:
-				room = i
-	#var room = room_positions[randi() % room_positions.size()] * grid_map.cell_size + Vector3(1.0,1.0,1.0) 
-	return room
 
 func get_player_spawn():
-	var distance=Vector3.ZERO
 	var room= Vector3.ZERO
 	for i in room_positions:
 		for j in room_positions:
@@ -81,11 +75,18 @@ func get_player_spawn():
 			else:
 				if i - j > i - room:
 					room = i
-	#var room = room_positions[randi() % room_positions.size()] * grid_map.cell_size + Vector3(1.0,1.0,1.0) 
+	print(room)
+	print(spawnable_rooms)
+	for i in range(spawnable_rooms.size()):
+		if room == spawnable_rooms[i]:
+			spawnable_rooms.remove_at(i)
+			spawnable_tiles.remove_at(i)
+			enemies_in_room.remove_at(i)
+			break
 	return room 
 
 func map_to_world(map_location: Vector3) -> Vector3:
-	return map_location * grid_map.cell_size + Vector3(1.0,1.0,1.0) 
+	return map_location * grid_map.cell_size + Vector3.UP
 
 func visualize_border():
 	grid_map.clear()
@@ -96,7 +97,7 @@ func visualize_border():
 		grid_map.set_cell_item( Vector3i(-1,0,i),3)
 
 func generate_full():
-	room_number = clamp(room_number, min_room_number, 10)
+	room_number = clamp(room_number, 3, 10)
 	await generate()
 	$NavigationRegion3D/DunMesh.dun_cell_scene = ModularCells
 	$NavigationRegion3D/DunMesh.create_dungeon()
@@ -106,16 +107,16 @@ func generate_full():
 	CreateNavMesh()
 	await $NavigationRegion3D.bake_finished
 	print("NavMesh Baked")
-	#generation_complete.emit()
 	GameEvents.emit_generation_complete()
 	
 func CreateNavMesh():
 	var on_thread: bool = true
 	$NavigationRegion3D.bake_navigation_mesh(on_thread)
-	
 
 func generate():
 	room_tiles.clear()
+	room_positions.clear()
+	spawnable_tiles.clear()
 	room_positions.clear()
 	var t : int = 0
 	if custom_seed : set_seed(custom_seed)
@@ -237,13 +238,22 @@ func make_room(rec:int):
 				return
 	
 	var room : PackedVector3Array = []
+	var spawnable_room: PackedVector3Array = []
 	for r in height:
 		for c in width:
 			var pos : Vector3i = start_pos + Vector3i(c,0,r)
 			grid_map.set_cell_item(pos,0)
 			room.append(pos)
+			if r == height || c == width:
+				continue
+			if r == 0 || c == 0:
+				continue
+			spawnable_room.append(pos)
 	room_tiles.append(room)
+	spawnable_tiles.append(spawnable_room)
 	var avg_x : float = start_pos.x + (float(width)/2)
 	var avg_z : float = start_pos.z + (float(height)/2)
 	var pos : Vector3 = Vector3(avg_x,0,avg_z)
 	room_positions.append(pos)
+	spawnable_rooms.append(pos)
+	enemies_in_room.append(0)

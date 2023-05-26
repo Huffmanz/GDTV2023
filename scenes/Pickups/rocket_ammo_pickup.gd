@@ -8,6 +8,6 @@ func _ready():
 
 func on_body_entered(body):
 	if body.is_in_group("Player"):
-		PlayerStats.change_uzi_ammo(ammo)
+		PlayerStats.change_rocket_ammo(ammo)
 		GameEvents.emit_item_picked_up(display_name, ammo)
 		queue_free()

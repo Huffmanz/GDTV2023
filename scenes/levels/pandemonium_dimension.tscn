@@ -46,6 +46,7 @@ script = ExtResource("1_dnu3f")
 
 [node name="DunGen" parent="." instance=ExtResource("2_s1b2o")]
 border_size = 15
+room_number = 5
 
 [node name="TimerScreen" type="CanvasLayer" parent="."]
 

@@ -19,11 +19,11 @@ func _ready():
 	for i in range(max(2 * current_level + 1, 10)):
 		var new_enemy = enemy_scene.instantiate()
 		add_child(new_enemy)
-		var enemy_room = dun_gen.get_room_except(player_room)
+		var enemy_room = dun_gen.get_enemy_room()
 		new_enemy.set_position(dun_gen.map_to_world(enemy_room))
 	var chaos_sphere = chaos_sphere_scene.instantiate()
 	add_child(chaos_sphere)
-	var room = dun_gen.get_room_except(player_room, true)
+	var room = dun_gen.get_spawnable_room(true)
 	chaos_sphere.set_position(dun_gen.map_to_world(room))
 	MusicPlayer.play_normal()
 	$LoadingScreen.queue_free()

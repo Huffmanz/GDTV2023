@@ -5,7 +5,6 @@ extends Node3D
 @export var chaos_sphere_scene: PackedScene = preload("res://scenes/chaos_sphere.tscn")
 var player
 var player_room: Vector3 = Vector3.ZERO
-var enemies_remaining: int = 0
 
 func _ready():
 	dun_gen.generate_full()
@@ -14,15 +13,13 @@ func _ready():
 	add_child(player)
 	player_room = dun_gen.get_player_spawn()
 	player.set_position(dun_gen.map_to_world(player_room))
-	GameEvents.enemy_spawned.connect(on_enemy_spawned)
-	GameEvents.enemy_died.connect(on_enemy_died)
 	var enemies_to_spawn = EnemyManager.enemies_spawned - EnemyManager.enemies_died
-	if enemies_to_spawn == 0:
-		enemies_to_spawn = 10
+	if enemies_to_spawn == 0: # for testing the scene stand-alone
+		enemies_to_spawn = 20
 	for i in range(enemies_to_spawn):
 		var new_enemy = await enemy_scene.instantiate()
 		add_child(new_enemy)
-		var enemy_room = dun_gen.get_room_except(player_room)
+		var enemy_room = dun_gen.get_enemy_room()
 		new_enemy.set_position(dun_gen.map_to_world(enemy_room))
 	$LoadingScreen.queue_free()
 	$ResetTimer.timeout.connect(reset)
@@ -47,9 +44,3 @@ func _process(delta):
 func reset():
 	EnemyManager.reset()
 	LevelManager.change_levels()
-
-func on_enemy_spawned():
-	enemies_remaining+=1
-	
-func on_enemy_died():
-	enemies_remaining-=1

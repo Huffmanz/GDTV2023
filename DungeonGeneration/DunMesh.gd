@@ -53,7 +53,7 @@ func create_dungeon():
 		if cell_index <=2\
 		&& cell_index >=0:
 			var dun_cell : Node3D = dun_cell_scene.instantiate()
-			dun_cell.position = Vector3(cell) * grid_map.cell_size + Vector3(1.0,0,1.0)
+			dun_cell.position = Vector3(cell) * (grid_map.cell_size) + Vector3(2.5,0,2.5)
 			add_child(dun_cell)
 			t +=1
 			for i in 4:
