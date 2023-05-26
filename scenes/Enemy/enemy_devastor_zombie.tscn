@@ -1,0 +1,213 @@
+[gd_scene load_steps=35 format=3 uid="uid://c047gsino5gu"]
+
+[ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_p6d1n"]
+[ext_resource type="PackedScene" uid="uid://dbffnewcyr45q" path="res://scenes/Components/health_component.tscn" id="2_e2pr2"]
+[ext_resource type="PackedScene" uid="uid://cspyhuefay1pb" path="res://scenes/Pickups/item_drop_component.tscn" id="3_h0ot6"]
+[ext_resource type="Resource" uid="uid://b5oexdjt0upgu" path="res://Resources/pando_enemy.tres" id="4_yors4"]
+[ext_resource type="PackedScene" uid="uid://b0j0uxpxd1rpd" path="res://scenes/Components/hurtbox_component.tscn" id="5_q324v"]
+[ext_resource type="Texture2D" uid="uid://dbn2lxmnjfevk" path="res://Assets/DevastatorZombie/sprites/devzh0.png" id="6_7tci4"]
+[ext_resource type="Texture2D" uid="uid://cj22r36bk8prp" path="res://Assets/DevastatorZombie/sprites/devzi0.png" id="7_a5yev"]
+[ext_resource type="Texture2D" uid="uid://bd8w3bhqvvm3y" path="res://Assets/DevastatorZombie/sprites/devzj0.png" id="8_c2g24"]
+[ext_resource type="Texture2D" uid="uid://cfsu6r3fv0wqr" path="res://Assets/DevastatorZombie/sprites/devzk0.png" id="9_jpsw8"]
+[ext_resource type="Texture2D" uid="uid://bhb7bw6ppub0g" path="res://Assets/DevastatorZombie/sprites/devzl0.png" id="10_p8pik"]
+[ext_resource type="Texture2D" uid="uid://edayu48mldg0" path="res://Assets/DevastatorZombie/sprites/devzm0.png" id="11_164a7"]
+[ext_resource type="Texture2D" uid="uid://cv5ijdiri68pk" path="res://Assets/DevastatorZombie/sprites/devzn0.png" id="12_b7jpy"]
+[ext_resource type="Texture2D" uid="uid://l853vepbxuka" path="res://Assets/DevastatorZombie/sprites/devzo0.png" id="13_kv7b7"]
+[ext_resource type="Texture2D" uid="uid://b8bfypox12otu" path="res://Assets/DevastatorZombie/sprites/devzp0.png" id="14_p4glx"]
+[ext_resource type="Texture2D" uid="uid://cdbuv1ttg3fri" path="res://Assets/DevastatorZombie/sprites/devzq0.png" id="15_pf7ws"]
+[ext_resource type="Texture2D" uid="uid://b54tqyrjxa836" path="res://Assets/DevastatorZombie/sprites/devzr0.png" id="16_qq35v"]
+[ext_resource type="Texture2D" uid="uid://diefye5vw3wid" path="res://Assets/DevastatorZombie/sprites/devzs0.png" id="17_qry8t"]
+[ext_resource type="Texture2D" uid="uid://dlvfq0xc1lfff" path="res://Assets/DevastatorZombie/sprites/devzt0.png" id="18_uekfa"]
+[ext_resource type="Texture2D" uid="uid://b0qsvgo7jv1gs" path="res://Assets/DevastatorZombie/sprites/devza1.png" id="19_hwv52"]
+[ext_resource type="Texture2D" uid="uid://ivxkn4ww8xq6" path="res://Assets/DevastatorZombie/sprites/devzg2.png" id="20_dfsf4"]
+[ext_resource type="Texture2D" uid="uid://cgwv1tsjuyanp" path="res://Assets/DevastatorZombie/sprites/devze1.png" id="21_qihjy"]
+[ext_resource type="Texture2D" uid="uid://rwmi4eg202mh" path="res://Assets/DevastatorZombie/sprites/devzf1.png" id="22_gd1qf"]
+[ext_resource type="Texture2D" uid="uid://dmlw5bkno1mrt" path="res://Assets/DevastatorZombie/sprites/devzb1.png" id="23_i88bx"]
+[ext_resource type="Texture2D" uid="uid://cgc44mvjwxm0k" path="res://Assets/DevastatorZombie/sprites/devzc1.png" id="24_ca0hy"]
+[ext_resource type="Texture2D" uid="uid://dwou145b5vuhq" path="res://Assets/DevastatorZombie/sprites/devzd1.png" id="25_pltku"]
+[ext_resource type="AudioStream" uid="uid://dnibx8yf4csyn" path="res://Assets/DevastatorZombie/sounds/dsdevzap.ogg" id="27_24m0y"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="29_ruvts"]
+[ext_resource type="AudioStream" uid="uid://by2ntdwbl0uni" path="res://Assets/sfx/enemypain.ogg" id="31_a76wg"]
+[ext_resource type="AudioStream" uid="uid://b204cbrgiitef" path="res://Assets/sfx/enemydie.ogg" id="32_1428m"]
+[ext_resource type="AudioStream" uid="uid://d4hqptigavxtg" path="res://Assets/sfx/big-impact-blood-3.wav" id="33_s5lnh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehkpb"]
+radius = 0.335974
+height = 1.24526
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkena"]
+height = 2.25184
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ssi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7tci4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a5yev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c2g24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jpsw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_p8pik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_164a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b7jpy")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_kv7b7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_p4glx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pf7ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qq35v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qry8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uekfa")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hwv52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dfsf4")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hwv52")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_qihjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_gd1qf")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hwv52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_i88bx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ca0hy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_pltku")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tb4di"]
+height = 0.874711
+radius = 12.0
+
+[node name="EnemyDevastorZombie" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 0
+script = ExtResource("1_p6d1n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173733, 0)
+shape = SubResource("CapsuleShape3D_ehkpb")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_e2pr2")]
+max_health = 20.0
+
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_h0ot6")]
+health_component = NodePath("../HealthComponent")
+chance_to_drop = 1.0
+drops = ExtResource("4_yors4")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_q324v")]
+collision_layer = 5
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632692, 0.0225251)
+shape = SubResource("CapsuleShape3D_dkena")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.520874, -0.174987)
+centered = false
+offset = Vector2(-16, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_2ssi2")
+animation = &"walking"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 0.25
+max_speed = 5.0
+
+[node name="VisualSense" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -20)
+
+[node name="HearingSense" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HearingSense"]
+shape = SubResource("CylinderShape3D_tb4di")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="FireAudioPlayer" parent="." instance=ExtResource("29_ruvts")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("27_24m0y")])
+
+[node name="HurtAudioPlayer" parent="." instance=ExtResource("29_ruvts")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("31_a76wg")])
+
+[node name="DeathAudioPlayer" parent="." instance=ExtResource("29_ruvts")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("32_1428m")])
+
+[node name="GibAudioPlayer" parent="." instance=ExtResource("29_ruvts")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("33_s5lnh")])

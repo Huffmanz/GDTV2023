@@ -1,0 +1,10 @@
+Name: Devastator Zombie
+Difficulty: Medium
+Connections: None
+Summon: DevastatorZombie
+Melee: No
+Distance: Projectile
+Type: Undead
+Brightmaps: No
+Actor modification: No
+ACS: No

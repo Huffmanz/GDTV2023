@@ -1,0 +1,6 @@
+Name: Shell Kit
+Type: Ammo
+Palette: Custom
+Summon: ShellKit
+Use Type: Instant
+Duration: Instant

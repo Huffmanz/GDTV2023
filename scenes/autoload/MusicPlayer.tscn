@@ -7,6 +7,7 @@
 bus = &"music"
 script = ExtResource("1_gyere")
 normal_music = ExtResource("2_g8c75")
+pandemonium_music = ExtResource("2_g8c75")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0

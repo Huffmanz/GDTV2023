@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://mt855eeeiatu"]
+
+[ext_resource type="Script" path="res://scenes/Pickups/uzi_ammo_pickup.gd" id="1_7xekg"]
+[ext_resource type="Texture2D" uid="uid://c2gyufcxm7vcb" path="res://Assets/Bullet Kit/SPRITES/amoka0.png" id="2_8quud"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqfp2"]
+radius = 0.41527
+
+[node name="UziAmmoPickup" type="Area3D"]
+script = ExtResource("1_7xekg")
+display_name = "UZI Ammo"
+ammo = 15
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_8quud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_aqfp2")

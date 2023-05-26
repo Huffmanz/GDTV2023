@@ -40,6 +40,7 @@ animations = [{
 
 [node name="Pistol" type="Node3D"]
 script = ExtResource("1_q0yom")
+damage = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

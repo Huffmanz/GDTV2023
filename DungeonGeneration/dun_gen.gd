@@ -17,6 +17,7 @@ func set_border_size(val : int)->void:
 	if Engine.is_editor_hint():
 		visualize_border()
 
+var min_room_number: int = 3
 @export var room_number : int = 4
 @export var room_margin : int = 1
 @export var room_recursion : int = 15
@@ -95,6 +96,7 @@ func visualize_border():
 		grid_map.set_cell_item( Vector3i(-1,0,i),3)
 
 func generate_full():
+	room_number = clamp(room_number, min_room_number, 10)
 	await generate()
 	$NavigationRegion3D/DunMesh.dun_cell_scene = ModularCells
 	$NavigationRegion3D/DunMesh.create_dungeon()

@@ -7,8 +7,7 @@ var total_weight: float = 0.0
 
 func _ready():
 	health_component.died.connect(on_died)
-	for i in drops.drop_chances:
-		total_weight += i
+	calculate_total_weight()
 
 func on_died():
 	if chance_to_drop > randf():
@@ -18,7 +17,6 @@ func drop_item():
 	var iteration_sum = 0.0
 	var chosen_item: int = 0
 	var chosen_weight = randf_range(0, total_weight)
-	#var drops = drops as DropTable
 	var max_iter = 100
 	var iter = 0
 	while(chosen_weight > iteration_sum || iter > max_iter):
@@ -31,5 +29,24 @@ func drop_item():
 	var spawn_position = (owner as Node3D).global_position 
 	spawn_position.y=1.5
 	drop_instance.global_position = spawn_position
+	if drop_instance is WeaponPickup:
+		remove_item_from_table(drops.pickup[chosen_item])
 	
+func remove_item_from_table(name: PackedScene):
+	var items_to_remove = []
+	for i in range(drops.pickup.size() - 1):
+		if drops.pickup[i] == name:
+			items_to_remove.append(i)
+			break;
+	
+	for i in items_to_remove:
+		drops.drop_chances.remove_at(i)
+		drops.pickup.remove_at(i)
+	calculate_total_weight()	
+	
+func calculate_total_weight():
+	total_weight = 0
+	for i in drops.drop_chances:
+		total_weight += i
+		
 	

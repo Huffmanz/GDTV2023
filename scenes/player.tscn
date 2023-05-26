@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gvs20fp0b0v1"]
+[gd_scene load_steps=16 format=3 uid="uid://gvs20fp0b0v1"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vql8a"]
 [ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="2_4s4g2"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bsslksil6ple3" path="res://Assets/sfx/Footsteps/footstep07.ogg" id="10_wnh4v"]
 [ext_resource type="AudioStream" uid="uid://c0tlkhyuaiwc5" path="res://Assets/sfx/Footsteps/footstep08.ogg" id="11_wi2sb"]
 [ext_resource type="AudioStream" uid="uid://dokxwb0osn13g" path="res://Assets/sfx/Footsteps/footstep09.ogg" id="12_hyuyd"]
+[ext_resource type="AudioStream" uid="uid://wc53km3swunq" path="res://Assets/sfx/allypain.ogg" id="13_l776j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xedm0"]
 radius = 0.368646
@@ -41,6 +42,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47142, 0)
 [node name="FootstepSoundPlayer" parent="." instance=ExtResource("2_4s4g2")]
 volume_db = -21.149
 streams = Array[AudioStream]([ExtResource("3_rdl38"), ExtResource("4_uy45e"), ExtResource("5_h54yb"), ExtResource("6_anhkg"), ExtResource("7_w4bhi"), ExtResource("8_oawcu"), ExtResource("9_2rrpt"), ExtResource("10_wnh4v"), ExtResource("11_wi2sb"), ExtResource("12_hyuyd")])
+
+[node name="HitSoundPlayer" parent="." instance=ExtResource("2_4s4g2")]
+volume_db = -21.149
+streams = Array[AudioStream]([ExtResource("13_l776j")])
 
 [node name="FootstepTimer" type="Timer" parent="."]
 wait_time = 0.33

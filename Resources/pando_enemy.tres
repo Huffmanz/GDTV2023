@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DropTable" load_steps=10 format=3 uid="uid://b5oexdjt0upgu"]
+
+[ext_resource type="PackedScene" uid="uid://dfmnh2jhb0cup" path="res://scenes/Pickups/health_pickup.tscn" id="1_walmv"]
+[ext_resource type="PackedScene" uid="uid://mt855eeeiatu" path="res://scenes/Pickups/uzi_ammo_pickup.tscn" id="2_b116g"]
+[ext_resource type="PackedScene" uid="uid://rqtrdn2blpqb" path="res://scenes/Pickups/shotgun_pickup.tscn" id="3_nm6bm"]
+[ext_resource type="PackedScene" uid="uid://c3s3mmq0sxtcw" path="res://scenes/Pickups/uzi_pickup.tscn" id="4_v2g2n"]
+[ext_resource type="PackedScene" uid="uid://diuj0i45qukd7" path="res://scenes/Pickups/shotgun_ammo_pickup.tscn" id="5_4312g"]
+[ext_resource type="Script" path="res://Resources/drop_table_resource.gd" id="6_afx03"]
+[ext_resource type="PackedScene" uid="uid://f014466kv8km" path="res://scenes/Pickups/rocket_launcher_pickup.tscn" id="6_eexk7"]
+[ext_resource type="PackedScene" uid="uid://cj3e2drrbp1w7" path="res://scenes/Pickups/armor_pickup.tscn" id="7_1g2dq"]
+[ext_resource type="PackedScene" uid="uid://p021xc7ydtq" path="res://scenes/Pickups/rocket_ammo_pickup.tscn" id="7_3pxe4"]
+
+[resource]
+script = ExtResource("6_afx03")
+drop_chances = Array[float]([30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0])
+pickup = Array[PackedScene]([ExtResource("1_walmv"), ExtResource("2_b116g"), ExtResource("3_nm6bm"), ExtResource("4_v2g2n"), ExtResource("5_4312g"), ExtResource("6_eexk7"), ExtResource("7_3pxe4"), ExtResource("7_1g2dq")])

@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
-@export var normal_music: AudioStreamMP3
-@export var pandemonium_music: AudioStreamOggVorbis
+@export var normal_music: AudioStream
+@export var pandemonium_music: AudioStream
 
 func _ready():
 	play_normal()
@@ -19,7 +19,7 @@ func play_normal():
 	stream = normal_music
 	play()
 
-func pandemonium_normal():
+func play_pandemonium():
 	stop()
 	stream = pandemonium_music
 	play()

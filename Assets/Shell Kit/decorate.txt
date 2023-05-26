@@ -1,0 +1,12 @@
+ACTOR ShellKit : Shell 12333
+{
+  Game Doom
+  Inventory.PickupMessage "Picked up a shell kit."
+  Inventory.Amount 12
+  States
+  {
+  Spawn:
+    SHLK A -1
+    Stop
+  }
+}

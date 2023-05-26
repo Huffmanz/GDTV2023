@@ -1,0 +1,12 @@
+actor BulletKit : Clip 12444
+{
+  Game Doom
+  Inventory.PickupMessage "Picked up a bullet kit"
+  Inventory.Amount 30
+  States
+  {
+  Spawn:
+    AMOK A -1
+    Stop
+  }
+}

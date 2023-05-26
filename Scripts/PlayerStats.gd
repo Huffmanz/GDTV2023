@@ -8,14 +8,14 @@ var max_health = 100
 var armor = 0
 var max_armor = 100
 var guns_carried = []
-var ammo_pistol = 50
-var ammo_rocket = 10
+var ammo_pistol = 999
+var ammo_rocket = 3
 var ammo_shells = 10
-var ammo_plasma = 0
-var ammo_max_pistol = 200
+var ammo_uzi = 25
+var ammo_max_pistol = 999
 var ammo_max_rocket = 50
 var ammo_max_shells = 100
-var ammo_max_plasma = 200
+var ammo_max_uzi = 200
 
 var red_key = false
 var blue_key = false
@@ -29,11 +29,11 @@ func reset():
 	var max_health = 100
 	var armor = 0
 	var max_armor = 100
-	var ammo_pistol = 50
-	var ammo_rocket = 0
-	var ammo_shells = 0
-	var ammo_plasma = 0
-	var ammo_max_pistol = 200
+	var ammo_pistol = 999
+	var ammo_rocket = 3
+	var ammo_shells = 10
+	var ammo_uzi = 25
+	var ammo_max_pistol = 999
 	var ammo_max_rocket = 50
 	var ammo_max_shells = 100
 	var ammo_max_plasma = 200
@@ -77,9 +77,9 @@ func change_rocket_ammo(amount):
 	ammo_rocket+=amount
 	ammo_rocket = clamp(ammo_rocket,0,ammo_max_rocket)
 	
-func change_plasma_ammo(amount):
-	ammo_plasma+=amount
-	ammo_plasma = clamp(ammo_plasma,0,ammo_max_plasma)
+func change_uzi_ammo(amount):
+	ammo_uzi+=amount
+	ammo_uzi = clamp(ammo_uzi,0,ammo_max_uzi)
 	
 func get_pistol_ammo():
 	return str(ammo_pistol)
@@ -90,8 +90,8 @@ func get_shotgun_ammo():
 func get_rocket_ammo():
 	return str(ammo_rocket)
 	
-func get_plasma_ammo():
-	return str(ammo_plasma)
+func get_uzi_ammo():
+	return str(ammo_uzi)
 	
 func get_health():
 	return str(health)

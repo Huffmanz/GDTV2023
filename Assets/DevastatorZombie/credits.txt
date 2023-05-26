@@ -1,0 +1,5 @@
+Code: scalliano, Ghastly_dragon (ZScript conversion)
+Sounds: Eriance (?)
+Sprites: Id Software, Eriance
+Sprite Edit: ItsNatureToDie, neoworm, Captain Toenail, Xim, Ghastly_dragon, scalliano
+Idea Base: Devastator from Demon Eclipse

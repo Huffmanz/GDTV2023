@@ -1,14 +1,113 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpkenswwkpnut"]
+[gd_scene load_steps=14 format=3 uid="uid://bpkenswwkpnut"]
 
 [ext_resource type="Script" path="res://scenes/levels/physical_dimension.gd" id="1_gxtc1"]
 [ext_resource type="PackedScene" uid="uid://ce0sukbhqo1ew" path="res://DungeonGeneration/dun_gen.tscn" id="2_n32dp"]
 [ext_resource type="PackedScene" uid="uid://dot510ncp1dim" path="res://scenes/hud.tscn" id="3_qh348"]
 [ext_resource type="PackedScene" uid="uid://crtqijio7r42e" path="res://Assets/Levels/doom_cell_2.tscn" id="3_sxarh"]
+[ext_resource type="Texture2D" uid="uid://c30aoue24h3og" path="res://Assets/ChaosSphere/sprite/chaoa0.png" id="5_ga20v"]
+[ext_resource type="FontFile" uid="uid://crvnlaim8ruey" path="res://Assets/Font/Shooting Star.otf" id="5_osbna"]
+[ext_resource type="Texture2D" uid="uid://b8i20a5avrufo" path="res://Assets/ChaosSphere/sprite/chaob0.png" id="6_sirmh"]
+[ext_resource type="Texture2D" uid="uid://cs8w7owpmqmlj" path="res://Assets/ChaosSphere/sprite/chaoc0.png" id="7_250it"]
+[ext_resource type="Texture2D" uid="uid://ch1tgmwij4ef6" path="res://Assets/ChaosSphere/sprite/chaod0.png" id="8_vomk8"]
+[ext_resource type="Texture2D" uid="uid://uroidlqynxw3" path="res://Assets/ChaosSphere/sprite/chaoe0.png" id="9_ye18p"]
+[ext_resource type="Texture2D" uid="uid://byv1sala5yfio" path="res://Assets/ChaosSphere/sprite/chaof0.png" id="10_1ohtu"]
+[ext_resource type="Texture2D" uid="uid://b7fuff00vnllw" path="res://Assets/ChaosSphere/sprite/chaog0.png" id="11_xahpy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fe2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ga20v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sirmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_250it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vomk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ye18p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1ohtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xahpy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PhysicalDimension" type="Node3D"]
 script = ExtResource("1_gxtc1")
 
 [node name="DunGen" parent="." groups=["Level"] instance=ExtResource("2_n32dp")]
 ModularCells = ExtResource("3_sxarh")
+survival_chance = 0.25
 
 [node name="HUD" parent="." instance=ExtResource("3_qh348")]
+
+[node name="LoadingScreen" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadingScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadingScreen/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="LoadingScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_osbna")
+theme_override_font_sizes/font_size = 45
+text = "The Physical Dimension
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="LoadingScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_osbna")
+text = "Obtain the Magic Orb to move to the next level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LoadingScreen/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadingScreen/MarginContainer/VBoxContainer2"]
+position = Vector2(71, -41)
+sprite_frames = SubResource("SpriteFrames_2fe2c")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="LoadingScreen/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_osbna")
+text = "Generating Level"

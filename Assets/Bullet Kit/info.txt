@@ -1,0 +1,6 @@
+Name: Bullet Kit
+Type: Ammo
+Palette: Custom
+Summon: BulletKit
+Use Type: Instant
+Duration: Instant

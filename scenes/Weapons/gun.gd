@@ -6,7 +6,7 @@ extends Node3D
 @onready var blood = preload("res://scenes/Effects/blood.tscn")
 @export var current_ammo = 0
 var can_shoot = true
-var damage = 8
+@export var damage = 8
 
 
 func _ready():

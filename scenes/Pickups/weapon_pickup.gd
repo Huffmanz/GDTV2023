@@ -1,5 +1,5 @@
 extends Area3D
-
+class_name  WeaponPickup
 @export var display_name: String
 @export var weapon: PackedScene = preload("res://scenes/Weapons/shotgun.tscn")
 @export var starting_ammo: int = 10
@@ -17,5 +17,4 @@ func on_body_entered(body):
 				break;
 		if !has_gun:
 			PlayerStats.carried_guns.append(weapon)
-			GameEvents.emit_item_picked_up(display_name, 1)
 			queue_free()
