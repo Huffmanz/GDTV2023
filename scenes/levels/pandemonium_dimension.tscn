@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch6g24x33oyui"]
+[gd_scene load_steps=15 format=3 uid="uid://ch6g24x33oyui"]
 
 [ext_resource type="Script" path="res://scenes/levels/pandemonium_dimension.gd" id="1_dnu3f"]
+[ext_resource type="PackedScene" uid="uid://c6sxan4h4dd3v" path="res://scenes/Enemy/enemy_spider.tscn" id="2_ctagv"]
 [ext_resource type="PackedScene" uid="uid://ce0sukbhqo1ew" path="res://DungeonGeneration/dun_gen.tscn" id="2_s1b2o"]
 [ext_resource type="PackedScene" uid="uid://dot510ncp1dim" path="res://scenes/hud.tscn" id="3_qtucb"]
+[ext_resource type="PackedScene" uid="uid://bn62qk0iud1dt" path="res://scenes/Enemy/enemy_devastor_zombie.tscn" id="3_yjh0v"]
 [ext_resource type="FontFile" uid="uid://crvnlaim8ruey" path="res://Assets/Font/Shooting Star.otf" id="4_yhmho"]
 [ext_resource type="Texture2D" uid="uid://c30aoue24h3og" path="res://Assets/ChaosSphere/sprite/chaoa0.png" id="5_bndpq"]
 [ext_resource type="Texture2D" uid="uid://b8i20a5avrufo" path="res://Assets/ChaosSphere/sprite/chaob0.png" id="6_n2srh"]
@@ -43,6 +45,7 @@ animations = [{
 
 [node name="PandemoniumDimension" type="Node3D" groups=["Level"]]
 script = ExtResource("1_dnu3f")
+enemy_scene = Array[PackedScene]([ExtResource("2_ctagv"), ExtResource("3_yjh0v")])
 
 [node name="DunGen" parent="." instance=ExtResource("2_s1b2o")]
 border_size = 15
@@ -152,3 +155,7 @@ text = "Generating Level"
 
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="LevelLoadTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

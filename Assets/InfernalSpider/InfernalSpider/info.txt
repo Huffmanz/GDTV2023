@@ -1,0 +1,10 @@
+Name: Infernal Spider
+Difficulty: Very Hard
+Connection: None
+Summon: BigInfernalSpider, SmallInfernalSpider
+Melee: Yes
+Distance: Projectile, Summon
+Type: Demon
+Brightmaps: No
+Added States: No
+ACS: No

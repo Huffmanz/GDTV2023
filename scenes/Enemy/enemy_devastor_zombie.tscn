@@ -1,6 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://c047gsino5gu"]
+[gd_scene load_steps=35 format=3 uid="uid://bn62qk0iud1dt"]
 
-[ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_p6d1n"]
+[ext_resource type="Script" path="res://scenes/Enemy/projectile_enemy.gd" id="1_ms7vw"]
 [ext_resource type="PackedScene" uid="uid://dbffnewcyr45q" path="res://scenes/Components/health_component.tscn" id="2_e2pr2"]
 [ext_resource type="PackedScene" uid="uid://cspyhuefay1pb" path="res://scenes/Pickups/item_drop_component.tscn" id="3_h0ot6"]
 [ext_resource type="Resource" uid="uid://b5oexdjt0upgu" path="res://Resources/pando_enemy.tres" id="4_yors4"]
@@ -143,7 +143,8 @@ radius = 12.0
 
 [node name="EnemyDevastorZombie" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 0
-script = ExtResource("1_p6d1n")
+script = ExtResource("1_ms7vw")
+health = 50.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173733, 0)
@@ -158,7 +159,7 @@ chance_to_drop = 1.0
 drops = ExtResource("4_yors4")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_q324v")]
-collision_layer = 5
+collision_layer = 4
 collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
@@ -183,6 +184,7 @@ radius = 0.25
 max_speed = 5.0
 
 [node name="VisualSense" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.753217, 0)
 target_position = Vector3(0, 0, -20)
 
 [node name="HearingSense" type="Area3D" parent="."]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GDTV2023"
-run/main_scene="res://scenes/levels/world.tscn"
+run/main_scene="res://scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,11 @@ GameEvents="*res://scenes/autoload/game_events.tscn"
 PlayerManager="*res://scenes/Managers/player_manager.tscn"
 LevelManager="*res://scenes/Managers/level_manager.tscn"
 MusicPlayer="*res://scenes/autoload/MusicPlayer.tscn"
+ItemDropManager="*res://scenes/Managers/item_drop_manager.tscn"
+
+[display]
+
+window/size/mode=3
 
 [dotnet]
 
@@ -70,6 +75,17 @@ previous_gun={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
 ]
 }
+pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemy"
 
 [rendering]
 

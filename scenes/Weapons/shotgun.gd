@@ -5,7 +5,7 @@ extends Node3D
 @onready var flash = preload("res://scenes/Effects/muzzle_flash.tscn")
 @onready var blood = preload("res://scenes/Effects/blood.tscn")
 var can_shoot = true
-var damage = 8
+var damage = 3
 
 func _ready():
 	gun_sprite.play("Idle")

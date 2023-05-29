@@ -75,8 +75,6 @@ func get_player_spawn():
 			else:
 				if i - j > i - room:
 					room = i
-	print(room)
-	print(spawnable_rooms)
 	for i in range(spawnable_rooms.size()):
 		if room == spawnable_rooms[i]:
 			spawnable_rooms.remove_at(i)
@@ -98,7 +96,11 @@ func visualize_border():
 
 func generate_full():
 	room_number = clamp(room_number, 3, 10)
-	await generate()
+	for i in range(5):
+		var completed: bool = await generate()
+		if completed:
+			break
+	
 	$NavigationRegion3D/DunMesh.dun_cell_scene = ModularCells
 	$NavigationRegion3D/DunMesh.create_dungeon()
 	await $NavigationRegion3D/DunMesh.generation_complete
@@ -113,7 +115,7 @@ func CreateNavMesh():
 	var on_thread: bool = true
 	$NavigationRegion3D.bake_navigation_mesh(on_thread)
 
-func generate():
+func generate() -> bool:
 	room_tiles.clear()
 	room_positions.clear()
 	spawnable_tiles.clear()
@@ -155,6 +157,8 @@ func generate():
 					var con : PackedInt32Array = [vp,c]
 					possible_connections.append(con)
 					
+		if possible_connections == null:
+			return false
 		var connection : PackedInt32Array = possible_connections.pick_random()
 		for pc in possible_connections:
 			if rpv2[pc[0]].distance_squared_to(rpv2[pc[1]]) <\
@@ -175,6 +179,7 @@ func generate():
 					hallway_graph.connect_points(p,c)
 					
 	create_hallways(hallway_graph)
+	return true
 	
 func create_hallways(hallway_graph:AStar2D):
 	var hallways : Array[PackedVector3Array] = []

@@ -1,0 +1,8 @@
+Submitted: Icytux
+Decorate: Icytux, Blue Shadow (jumping code)
+ACS: Blue Shadow
+GLDefs: Ghastly Dragon
+Sounds: Croteam (Serious Sam), Monolith Games
+Sprites: Monolith
+Sprite Edit: Icytux, Tormentor667
+Idea Base: Icytux' spiderphobia

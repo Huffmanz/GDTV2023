@@ -2,7 +2,7 @@ extends Area3D
 
 var speed = 20
 @onready var splash_damage = $SplashDamage
-var rocket_damage = 25
+var rocket_damage = 15
 
 func _ready():
 	area_entered.connect(on_body_entered)

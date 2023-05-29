@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var shotgun = preload("res://scenes/Weapons/shotgun.tscn")
 @onready var uzi = preload("res://scenes/Weapons/uzi.tscn")
 @onready var rocket_launcher = preload("res://scenes/Weapons/rocket_launcher.tscn")
+@onready var DamageTimer = $DamageTimer
 
 var current_gun = 0
 #@onready var carried_guns = [pistol, shotgun, uzi, rocket_launcher]
@@ -21,6 +22,7 @@ func _ready():
 	change_gun(0)
 	$FootstepTimer.timeout.connect(on_footstep)
 	PlayerStats.PlayerDamaged.connect(on_player_damaged)
+	DamageTimer.timeout.connect(on_damage_timer_timeout)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -36,6 +38,9 @@ func change_gun(gun):
 	PlayerStats.current_gun = new_gun.name
 	
 func _process(delta):
+	if PlayerStats.health == 0:
+		LevelManager.death_screen()
+	
 	if Input.is_action_just_pressed("next_gun"):
 		current_gun += 1
 		if current_gun > len(PlayerStats.carried_guns) - 1:
@@ -53,8 +58,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	#	velocity.y = JUMP_VELOCITY
 
 	var input_dir = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -66,9 +71,22 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
 func on_footstep():
 	if velocity != Vector3.ZERO:
 		$FootstepSoundPlayer.play_random()
-
-func on_player_damaged():
+	
+func player_hurt():
 	$HitSoundPlayer.play_random()
+	$CollisionShape3D.disabled = true
+	$DamageTimer.start()
+
+func enable_damage():
+	$CollisionShape3D.disabled = false	
+	
+func on_player_damaged():
+	call_deferred("player_hurt")	
+	
+func on_damage_timer_timeout():
+	call_deferred("enable_damage")
+

@@ -111,3 +111,7 @@ autoplay = "default"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_osbna")
 text = "Generating Level"
+
+[node name="LevelLoadTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

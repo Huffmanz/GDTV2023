@@ -1,0 +1,59 @@
+Pointlight FlameShot1
+{
+Color 0.5 0.5 0.0
+Size 32
+}
+
+Pointlight FlameShot2
+{
+Color 0.8 0.8 0.0
+Size 40
+}
+
+Pointlight FlameShot3
+{
+Color 1.0 1.0 0.0
+Size 48
+}
+
+Pointlight FlameShot4
+{
+Color 0.8 0.8 0.0
+Size 56
+}
+
+Pointlight FlameShot5
+{
+Color 0.5 0.5 0.0
+Size 48
+}
+
+Pointlight FlameShot6
+{
+Color 0.3 0.3 0.0
+Size 32
+}
+
+Object FlameShot
+{
+Frame SBALA { Light FlameShot1 }
+Frame SBALB { Light FlameShot1 }
+Frame SBALC { Light FlameShot1 }
+Frame SBALD { Light FlameShot2 }
+Frame SBALE { Light FlameShot3 }
+Frame SBALF { Light FlameShot4 }
+Frame SBALG { Light FlameShot5 }
+Frame SBALH { Light FlameShot6 }
+}
+
+object ArchvileFire2
+{
+frame FIREA { light ARCHFIRE1 }
+frame FIREB { light ARCHFIRE2 }
+frame FIREC { light ARCHFIRE3 }
+frame FIRED { light ARCHFIRE4 }
+frame FIREE { light ARCHFIRE5 }
+frame FIREF { light ARCHFIRE6 }
+frame FIREG { light ARCHFIRE7 }
+frame FIREH { light ARCHFIRE8 }
+}

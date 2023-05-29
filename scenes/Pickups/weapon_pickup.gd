@@ -17,4 +17,5 @@ func on_body_entered(body):
 				break;
 		if !has_gun:
 			PlayerStats.carried_guns.append(weapon)
+			GameEvents.emit_item_picked_up(display_name, 1)
 			queue_free()

@@ -1,0 +1,30 @@
+#library "s_infspi"
+#include "zcommon.acs"
+
+Script "Spider-Jumping" (int part)
+{
+  int spider_sectorheight = GetActorCeilingZ(0) - GetActorZ(0);
+  int spider_floorz = GetActorZ(0) - GetActorFloorZ(0);
+  int spider_velz = GetActorVelZ(0);
+
+  Switch(part)
+  {
+  Case 1: // Checks to see if there is enough room above to perform the jump
+    If(spider_sectorheight <= 376.0) SetResultValue(TRUE);
+    Else SetResultValue(FALSE);
+
+    Break;
+
+  Case 2: // Checks to see if the monster has landed on the floor
+    If(spider_velz == 0.0) SetResultValue(TRUE);
+    Else SetResultValue(FALSE);
+
+    Break;
+
+  Case 3: // Checks to see if the monster has landed on an obstacle
+    If(spider_floorz > 0.0 && spider_velz == 0.0) SetResultValue(TRUE);
+    Else SetResultValue(FALSE);
+
+    Break;
+  }
+}

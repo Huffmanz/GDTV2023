@@ -7,6 +7,8 @@ var total_weight: float = 0.0
 
 func _ready():
 	health_component.died.connect(on_died)
+	GameEvents.item_dropped.connect(on_item_dropped)
+	remove_held_weapons()
 	calculate_total_weight()
 
 func on_died():
@@ -27,10 +29,13 @@ func drop_item():
 	var drop_instance = drops.pickup[chosen_item].instantiate()
 	get_tree().get_first_node_in_group("Level").add_child(drop_instance)
 	var spawn_position = (owner as Node3D).global_position 
-	spawn_position.y=1.5
+	
 	drop_instance.global_position = spawn_position
 	if drop_instance is WeaponPickup:
-		remove_item_from_table(drops.pickup[chosen_item])
+		spawn_position.y= 1
+	#	remove_item_from_table(drops.pickup[chosen_item])
+		ItemDropManager.dropped_weapons.append(drops.pickup[chosen_item])
+	GameEvents.emit_item_dropped()
 	
 func remove_item_from_table(name: PackedScene):
 	var items_to_remove = []
@@ -49,4 +54,11 @@ func calculate_total_weight():
 	for i in drops.drop_chances:
 		total_weight += i
 		
+func remove_held_weapons():
+	for i in ItemDropManager.dropped_weapons:
+		remove_item_from_table(i)
+			
+func on_item_dropped():
+	remove_held_weapons()
+	
 	

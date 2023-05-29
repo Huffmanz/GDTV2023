@@ -1,0 +1,10 @@
+spider2/sight SPISIT
+spider2/death SPIDTH
+spider2/pain SPIPAI
+spider2/active SPIACT
+spider2/land SPILND
+
+
+$random spider/step {spider/step1 spider/step2}
+spider/step1 SPIST1
+spider/step2 SPIST2

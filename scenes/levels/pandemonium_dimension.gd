@@ -1,8 +1,10 @@
 extends Node3D
 @onready var dun_gen = $DunGen
-@export var enemy_scene: PackedScene = preload("res://scenes/Enemy/enemy_devastor_zombie.tscn")
+@export var enemy_scene: Array[PackedScene]
 @export var player_scene: PackedScene = preload("res://scenes/player.tscn")
-@export var chaos_sphere_scene: PackedScene = preload("res://scenes/chaos_sphere.tscn")
+
+@onready var level_load_timer = $LevelLoadTimer
+
 var player
 var player_room: Vector3 = Vector3.ZERO
 
@@ -13,17 +15,18 @@ func _ready():
 	add_child(player)
 	player_room = dun_gen.get_player_spawn()
 	player.set_position(dun_gen.map_to_world(player_room))
-	var enemies_to_spawn = EnemyManager.enemies_spawned - EnemyManager.enemies_died
+	var enemies_to_spawn = (EnemyManager.enemies_spawned - EnemyManager.enemies_died) * 2
 	if enemies_to_spawn == 0: # for testing the scene stand-alone
 		enemies_to_spawn = 20
 	for i in range(enemies_to_spawn):
-		var new_enemy = await enemy_scene.instantiate()
+		var new_enemy = enemy_scene[randi_range(0, enemy_scene.size() - 1)].instantiate()
 		add_child(new_enemy)
 		var enemy_room = dun_gen.get_enemy_room()
 		new_enemy.set_position(dun_gen.map_to_world(enemy_room))
-	$LoadingScreen.queue_free()
 	$ResetTimer.timeout.connect(reset)
 	MusicPlayer.play_pandemonium()
+	level_load_timer.timeout.connect(on_level_load_timer_timeout)
+	level_load_timer.start()
 	
 func _process(delta):
 	var enemies_left = get_tree().get_nodes_in_group("Enemy").size()
@@ -44,3 +47,7 @@ func _process(delta):
 func reset():
 	EnemyManager.reset()
 	LevelManager.change_levels()
+	
+func on_level_load_timer_timeout():
+	$LoadingScreen.queue_free()
+

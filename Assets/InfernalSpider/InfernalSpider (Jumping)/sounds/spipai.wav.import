@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4g3ilwrae4vh"
+path="res://.godot/imported/spipai.wav-36eef17627d7bf758a249da6d33c6861.sample"
+
+[deps]
+
+source_file="res://Assets/InfernalSpider/InfernalSpider (Jumping)/sounds/spipai.wav"
+dest_files=["res://.godot/imported/spipai.wav-36eef17627d7bf758a249da6d33c6861.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

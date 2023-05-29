@@ -8,30 +8,30 @@ extends CharacterBody3D
 @onready var hearing_sense = $HearingSense
 @onready var visual_sense:RayCast3D = $VisualSense
 @onready var shoot_timer = $ShootTimer
-
-
-var path = [] #hold the paht coordinates from the enemy to the player
-var path_index = 0
-var speed = 3.0
-var health = 20.0
+@export var speed = 3.0
+@export var health = 20.0
+@export var damage = 8
+	
 var move = true
 var searching = false
 var shooting = false
 var dead = false
-var damage = 8
+var can_attack_target = false
 
 
 func _ready():
-	nav_agent.path_desired_distance = 4.0
-	nav_agent.target_desired_distance = 4.0
-	nav_agent.radius = collision.shape.radius
-	nav_agent.max_speed = speed
 	$AnimatedSprite3D.play("walking")
 	hearing_sense.body_entered.connect(hearing_sense_on_body_entered)
 	shoot_timer.timeout.connect(on_shoot_timer_timeout)
 	GameEvents.emit_enemy_spawned()
 	$HurtboxComponent.hit.connect(on_hit)
 	$HealthComponent.died.connect(on_death)
+	#shoot_timer.wait_time = randf_range(shoot_timer.wait_time / 1.25, shoot_timer.wait_time * 1.25)
+	#speed = randf_range(speed / 1.25, speed * 1.25)
+	speed = speed * (1 + .1 * LevelManager.current_level)
+	
+func set_target_location(target_location):
+	nav_agent.set_target_position(target_location)
 	
 func on_hit():
 	move = false
@@ -39,19 +39,18 @@ func on_hit():
 	$AnimatedSprite3D.play("hit")
 	await $AnimatedSprite3D.animation_finished
 	move = true
-	
 				
 func _physics_process(delta):
 	if dead:
 		return
-		
+	var next_path_position: Vector3 = nav_agent.get_next_path_position()	
+	var current_location = global_transform.origin
 	look_at_player()
 	if searching and not shooting:
 		if nav_agent.is_navigation_finished():
 			find_path(player.global_transform.origin)
-		var next_path_position: Vector3 = nav_agent.get_next_path_position()
-		var new_velocity: Vector3 = next_path_position - global_position
-		new_velocity = (new_velocity.normalized()) * speed
+		
+		var new_velocity: Vector3 = (next_path_position - global_transform.origin).normalized() * speed
 		velocity = velocity.move_toward(new_velocity, .25)
 		if move:
 			$AnimatedSprite3D.play("walking")
@@ -64,15 +63,22 @@ func look_at_player():
 	visual_sense.look_at(player.global_transform.origin)
 	if visual_sense.is_colliding():
 		if visual_sense.get_collider().is_in_group("Player"):
-			searching = true
+			can_attack_target = true
 		else:
-			searching = false
-			var check_hear = hearing_sense.get_overlapping_bodies()
-			for body in check_hear:
-				if body.is_in_group("Player"):
-					searching = true
-					return
-	
+			check_hearing()
+			can_attack_target = false
+	else:
+		check_hearing()
+		can_attack_target = false
+		
+func check_hearing():
+	searching = false
+	var check_hear = hearing_sense.get_overlapping_bodies()
+	for body in check_hear:
+		if body.is_in_group("Player"):
+			searching = true
+			return
+				
 func find_path(target):
 	nav_agent.target_position = target
 	
@@ -92,7 +98,7 @@ func on_death():
 	#$AnimatedSprite3D.billboard = 0
 	
 func shoot():
-	if searching and not dead and not shooting:
+	if can_attack_target and not dead and not shooting:
 		$FireAudioPlayer.play_random()
 		$AnimatedSprite3D.play("shoot")
 		shooting = true
@@ -109,5 +115,4 @@ func hearing_sense_on_body_entered(body):
 	
 func on_shoot_timer_timeout():
 	shoot()
-
 

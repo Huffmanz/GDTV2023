@@ -1,7 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://dvhrdn1fe5cjq"]
+[gd_scene load_steps=38 format=3 uid="uid://2tlxiidx7nig"]
 
 [ext_resource type="Texture2D" uid="uid://bqxshlyleruwb" path="res://Assets/Sprites/AutoShotgunGuy/asgzh0.png" id="1_b6cfp"]
-[ext_resource type="Script" path="res://scenes/Enemy/enemy_basic_grunt.gd" id="1_qch8c"]
+[ext_resource type="Script" path="res://scenes/Enemy/hitscan_enemy.gd" id="1_smvsm"]
 [ext_resource type="PackedScene" uid="uid://b0j0uxpxd1rpd" path="res://scenes/Components/hurtbox_component.tscn" id="2_bpesa"]
 [ext_resource type="PackedScene" uid="uid://dbffnewcyr45q" path="res://scenes/Components/health_component.tscn" id="2_fmh4y"]
 [ext_resource type="Texture2D" uid="uid://c3kklhi88sohm" path="res://Assets/Sprites/AutoShotgunGuy/asgzi0.png" id="2_gmslv"]
@@ -35,8 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://d4hqptigavxtg" path="res://Assets/sfx/big-impact-blood-3.wav" id="33_a7rq4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehkpb"]
-radius = 0.34745
-height = 1.42912
+height = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d7mav"]
 radius = 0.499291
@@ -152,11 +151,12 @@ animations = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tb4di"]
 height = 0.874711
-radius = 12.0
+radius = 20.0
 
 [node name="EnemyBasicGrunt" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 0
-script = ExtResource("1_qch8c")
+script = ExtResource("1_smvsm")
+speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.248752, -0.00601792)
@@ -191,7 +191,7 @@ animation = &"shoot"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
-radius = 0.25
+radius = 1.5
 max_speed = 5.0
 
 [node name="VisualSense" type="RayCast3D" parent="."]
@@ -199,7 +199,7 @@ target_position = Vector3(0, 0, -20)
 
 [node name="HearingSense" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HearingSense"]
 shape = SubResource("CylinderShape3D_tb4di")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbt4rc3tvmjmm"]
+
+[ext_resource type="Script" path="res://scenes/Managers/item_drop_manager.gd" id="1_mk7ye"]
+
+[node name="ItemDropManager" type="Node"]
+script = ExtResource("1_mk7ye")

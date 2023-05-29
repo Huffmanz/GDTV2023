@@ -50,3 +50,5 @@ streams = Array[AudioStream]([ExtResource("13_l776j")])
 [node name="FootstepTimer" type="Timer" parent="."]
 wait_time = 0.33
 autostart = true
+
+[node name="DamageTimer" type="Timer" parent="."]

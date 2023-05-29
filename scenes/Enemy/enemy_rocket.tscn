@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://it6trlsfw6eh"]
+
+[ext_resource type="Script" path="res://scenes/Enemy/enemy_rocket.gd" id="1_q6sxc"]
+[ext_resource type="Texture2D" uid="uid://by7w2f0f7a4ti" path="res://Assets/DevastatorZombie/sprites/dbala0.png" id="2_ygr0g"]
+[ext_resource type="Texture2D" uid="uid://dxtkjiglduut2" path="res://Assets/DevastatorZombie/sprites/dbalb0.png" id="3_00m6r"]
+[ext_resource type="Texture2D" uid="uid://bw6c43dmicqvp" path="res://Assets/DevastatorZombie/sprites/dbalc0.png" id="4_rafkb"]
+[ext_resource type="Texture2D" uid="uid://c3nna4mff3qbl" path="res://Assets/DevastatorZombie/sprites/dbald0.png" id="5_v7f0f"]
+[ext_resource type="Texture2D" uid="uid://gtrv75ej14op" path="res://Assets/DevastatorZombie/sprites/dbale0.png" id="6_4rlax"]
+[ext_resource type="Texture2D" uid="uid://cby43ypnrnikr" path="res://Assets/DevastatorZombie/sprites/dbalf0.png" id="7_ingox"]
+[ext_resource type="Texture2D" uid="uid://b7a3tjlbqkqrr" path="res://Assets/DevastatorZombie/sprites/dbalg0.png" id="8_oe5of"]
+[ext_resource type="Texture2D" uid="uid://be5h2bpbdksbl" path="res://Assets/DevastatorZombie/sprites/dbalh0.png" id="9_wx34u"]
+[ext_resource type="PackedScene" uid="uid://cadccypusuvai" path="res://scenes/Components/random_audio_stream_player_3d.tscn" id="17_aofwb"]
+[ext_resource type="AudioStream" uid="uid://d3aevswy1w4kc" path="res://Assets/SeekerBazooka/sounds/dsqkldth.wav" id="18_3rkn0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2lob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ygr0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_00m6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rafkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v7f0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4rlax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ingox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oe5of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wx34u")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ygr0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_00m6r")
+}],
+"loop": true,
+"name": &"rocket",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4mtr0"]
+radius = 0.35
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u6e31"]
+radius = 1.09922
+
+[node name="EnemyRocket" type="Area3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_q6sxc")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.244734)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_h2lob")
+animation = &"explode"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4mtr0")
+
+[node name="SplashDamage" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SplashDamage"]
+shape = SubResource("SphereShape3D_u6e31")
+
+[node name="ExplosionSoundPlayer" parent="." instance=ExtResource("17_aofwb")]
+streams = Array[AudioStream]([ExtResource("18_3rkn0")])

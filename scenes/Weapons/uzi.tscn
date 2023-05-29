@@ -32,23 +32,25 @@ animations = [{
 
 [node name="Uzi" type="Node3D"]
 script = ExtResource("1_tb376")
+damage = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -40.0
+offset_left = -20.0
 offset_top = -40.0
-grow_horizontal = 0
+offset_right = 20.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="GunSprite" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(-199, 49)
+position = Vector2(400, 49)
 rotation = 3.14159
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u8vwf")
@@ -79,7 +81,7 @@ collision_mask = 5
 collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
 autostart = true
 
 [node name="FireAudioPlayer" parent="." instance=ExtResource("6_0yfn2")]

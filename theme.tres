@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://qjxdx1gmpwfd"]
+
+[ext_resource type="FontFile" uid="uid://crvnlaim8ruey" path="res://Assets/Font/Shooting Star.otf" id="1_bnvwy"]
+[ext_resource type="Texture2D" uid="uid://b6wxut732cpxy" path="res://Assets/UI/red.png" id="2_cwcbh"]
+[ext_resource type="Texture2D" uid="uid://b8k5fgsys3whu" path="res://Assets/UI/grey.png" id="2_m2846"]
+[ext_resource type="Texture2D" uid="uid://c4ynpussarkwm" path="res://Assets/UI/red_pressed.png" id="3_jned8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_afxf7"]
+load_path = "res://.godot/imported/red.png-c81585e11da62fbe058411f4ce963502.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0khg"]
+texture = SubResource("CompressedTexture2D_afxf7")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 48, 48)
+modulate_color = Color(0.827451, 0.231373, 0.180392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nitj"]
+texture = ExtResource("2_cwcbh")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 48, 48)
+modulate_color = Color(0.827451, 0.231373, 0.180392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxfxe"]
+texture = ExtResource("3_jned8")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.709804, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f67bd"]
+texture = ExtResource("2_m2846")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[resource]
+default_font = ExtResource("1_bnvwy")
+default_font_size = 16
+Button/fonts/font = ExtResource("1_bnvwy")
+Button/styles/hover = SubResource("StyleBoxTexture_d0khg")
+Button/styles/normal = SubResource("StyleBoxTexture_6nitj")
+Button/styles/pressed = SubResource("StyleBoxTexture_mxfxe")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_f67bd")
