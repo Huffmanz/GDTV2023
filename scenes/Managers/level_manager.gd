@@ -18,7 +18,7 @@ func on_level_generated():
 func change_levels():
 	if(EnemyManager.enemies_spawned == 0):
 		get_tree().change_scene_to_file("res://scenes/levels/physical_dimension.tscn")
-	if EnemyManager.enemies_spawned > EnemyManager.enemies_died:
+	if EnemyManager.enemies_died > 0:
 		get_tree().change_scene_to_file("res://scenes/levels/pandemonium_dimension.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scenes/levels/physical_dimension.tscn")

@@ -15,7 +15,8 @@ func _ready():
 	add_child(player)
 	player_room = dun_gen.get_player_spawn()
 	player.set_position(dun_gen.map_to_world(player_room))
-	var enemies_to_spawn = (EnemyManager.enemies_spawned - EnemyManager.enemies_died) * 2
+	var enemies_to_spawn = EnemyManager.enemies_died
+	get_tree().paused = true
 	if enemies_to_spawn == 0: # for testing the scene stand-alone
 		enemies_to_spawn = 20
 	for i in range(enemies_to_spawn):
@@ -49,5 +50,6 @@ func reset():
 	LevelManager.change_levels()
 	
 func on_level_load_timer_timeout():
+	get_tree().paused = false
 	$LoadingScreen.queue_free()
 

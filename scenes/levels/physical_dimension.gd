@@ -18,6 +18,7 @@ func _ready():
 	add_child(player)
 	player_room = dun_gen.get_player_spawn()
 	player.set_position(dun_gen.map_to_world(player_room))
+	get_tree().paused = true
 	for i in range(max(3 * current_level + 1, 8)):
 		var new_enemy = enemy_scene.instantiate()
 		add_child(new_enemy)
@@ -37,4 +38,5 @@ func _physics_process(delta):
 	get_tree().call_group("Enemy", "set_target_location", player.global_transform.origin)
 	
 func on_level_load_timer_timeout():
+	get_tree().paused = false
 	$LoadingScreen.queue_free()

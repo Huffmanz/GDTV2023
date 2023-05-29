@@ -46,14 +46,18 @@ animations = [{
 script = ExtResource("1_gxtc1")
 
 [node name="DunGen" parent="." groups=["Level"] instance=ExtResource("2_n32dp")]
+process_mode = 3
 ModularCells = ExtResource("3_sxarh")
 survival_chance = 0.25
 
 [node name="HUD" parent="." instance=ExtResource("3_qh348")]
+process_mode = 3
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -65,6 +69,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="LoadingScreen"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,11 +82,13 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LoadingScreen/MarginContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Title" type="Label" parent="LoadingScreen/MarginContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_osbna")
 theme_override_font_sizes/font_size = 45
@@ -91,6 +98,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="LoadingScreen/MarginContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_osbna")
 text = "Obtain the Magic Orb to move to the next level"
@@ -98,20 +106,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="LoadingScreen/MarginContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadingScreen/MarginContainer/VBoxContainer2"]
+process_mode = 3
 position = Vector2(71, -41)
 sprite_frames = SubResource("SpriteFrames_2fe2c")
 autoplay = "default"
 
 [node name="Label" type="Label" parent="LoadingScreen/MarginContainer/VBoxContainer2"]
+process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_osbna")
 text = "Generating Level"
 
 [node name="LevelLoadTimer" type="Timer" parent="."]
+process_mode = 3
 wait_time = 5.0
 one_shot = true
