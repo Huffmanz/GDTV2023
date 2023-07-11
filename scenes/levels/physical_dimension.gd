@@ -35,6 +35,8 @@ func _ready():
 func _physics_process(delta):
 	if player == null:
 		return
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	
 	get_tree().call_group("Enemy", "set_target_location", player.global_transform.origin)
 	
 func on_level_load_timer_timeout():

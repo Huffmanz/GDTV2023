@@ -30,6 +30,9 @@ func _ready():
 	level_load_timer.start()
 	
 func _process(delta):
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
 	var enemies_left = get_tree().get_nodes_in_group("Enemy").size()
 	
 	if !$ResetTimer.is_stopped():
